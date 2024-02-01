@@ -17,6 +17,10 @@
   background-color: #5b5fc7 !important;
   transition: background-color 0.3s ease; 
 }
+.btn1 {
+  background-color: #5b5fc7 !important;
+  transition: background-color 0.3s ease; 
+}
 
 .text-success {
   margin-left: 410px;

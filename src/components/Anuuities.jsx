@@ -99,12 +99,12 @@ const Anuuities = ({ chatid }) => {
             style={{ marginLeft: "448px", marginTop: "20px", width: "53.5%" }}
           >
             <Tr>
-              <Td>
+              <Td >
                 {" "}
-                <p style={{fontSize:"18px", fontWeight:"bold"}}>Annuities for the above Instruction Type</p>
+                <p style={{fontSize:"18px", fontWeight:"bold"}} className="hdng">Annuities for the above Instruction Type</p>
               </Td>
             </Tr>
-            <Table className="table-striped">
+            <Table className="table-striped table table-hover">
               <Thead>
                 <Tr>
                   {Object.keys(instructionType[0]).map((property) => (

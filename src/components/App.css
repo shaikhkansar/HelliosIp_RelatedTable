@@ -136,7 +136,7 @@ body {
  .thTdStyle{
   padding: 8px;
   border: 1px solid lightgray;
-  background-color:lightgray ;
+  background-color:lightgray!important;
   text-align: center;
  }
  .thTdStyle2{
@@ -152,7 +152,7 @@ body {
 
 /* Light gray background color for the table rows */
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f8f9fa;
+  background-color: white;
 }
 
 /* Style for table header cells */
@@ -173,6 +173,9 @@ body {
 
 
 /* AddAnnuities */
+.table-striped{
+  margin-top:10px;}
+
 
 /* Light gray border for the table */
 .SuperResponsiveTable {
@@ -212,7 +215,7 @@ body {
 
 .thstyle{
 
-  background-color: lightgray;
+  background-color: lightgray!important;
   padding: 8px;
   border-bottom: 1px solid lightgray;
 }
@@ -225,6 +228,14 @@ body {
 .cellstyle{
   padding: 8px;
   border-bottom: 1px solid lightgray;
+}
+
+.handle-search{
+margin-top: 10px;
+}
+
+.search-icon{
+  margin-left: 300px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -393,6 +404,8 @@ body {
     margin-left:-103px;
     width: 52%;
     font-size: 13px;
+    margin-top: 10px;
+
     
 }
 .h4, h4 {
@@ -435,9 +448,9 @@ button, input, optgroup, select, textarea {
 
 
 /* AnnuitiesClientInx rcss */
-.AnnuitiesClientInx{
-  margin-left: 414px;
-  width: calc(24% - 1px);
+.annuities-client-inx{
+  margin-left: 415px;
+  width: calc(25% - 1px)!important;
   font-size: 12.3px;
 }
 
@@ -449,5 +462,39 @@ button, input, optgroup, select, textarea {
   margin-left: 50px;
 }
 
+.hdng{
+  font-weight: bold;
+  margin-left: -105px;
+  font-size: 13px!important;
+}
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-left: 420px;
+  font-size: 13px!important;
+}
+
+.form-control {
+  display: block;
+  font-size: 12px !important;
+  font-weight: 600;
+  line-height: 2;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 0.25rem;
+  margin-left: 415px;
+  width: 23.7%!important;
+  margin-top: 0px;
+}
+
+.search-icon{
+  margin-top: 415px;
+  margin-left: -450px;
+}
+
+.back-btn{
+/* margin-left: 150px!important; */
+}
  }

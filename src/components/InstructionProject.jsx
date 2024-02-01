@@ -65,7 +65,7 @@ const InstructionProject = ({ chatid }) => {
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
-        <Table className="tablestyle">
+        <Table className="tablestyle table table-hover">
           <Thead>
             <Tr>
               <Th className="thstyle" colSpan="2">

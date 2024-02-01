@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate} from "react-router-dom";
 import AddAnnuities from "./AddAnnuities";
-import { Edit, SkipBack } from "react-feather";
+import { Edit, SkipBack,Search } from "react-feather";
 import EditAnnuities from "./EditAnnuities";
 import DeleteAnnuities from "./DeleteAnnuities";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
@@ -59,6 +59,18 @@ const AnnuitiesClientInstruction = () => {
     setSelectedEntry(entry);
   };
 
+  const handleEditSuccess = (updatedEntry) => {
+    // Assuming flowData is an array of entries
+    // Update the state instantly by mapping over the existing array
+    setFlowData((prevFlowData) =>
+      prevFlowData.map((entry) =>
+        entry.ClientInstructionID === updatedEntry.ClientInstructionID
+          ? updatedEntry // Update the specific entry
+          : entry
+      )
+    );
+     };
+
   const handleEditModalClose = () => {
     // Reset the selected entry after editing is done or modal is closed
     setSelectedEntry(null);
@@ -75,8 +87,12 @@ const AnnuitiesClientInstruction = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
+
+  
   return (
     <>
+     <div >
+    <div>
  <button
           onClick={handleGoBack}
           className="btn add-button"
@@ -88,20 +104,29 @@ const AnnuitiesClientInstruction = () => {
           <SkipBack style={{ marginRight: '5px' }} />
           Go back
         </button>
-        
+        </div>
+        </div>
+   <div>
       <h3>Instruction Project - ( England )</h3>
       <AddAnnuities onAddEntry={handleAddEntry} />
-      
+      <div className="handle-search">
+              <div className="search-icon">
+                <Search />
+              </div>
+              <input
+                type="text"
+                className="form-control search-control"
+                placeholder="Search"
+                // value={searchQuery}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              
+            </div>
       <div>
-      <input
-          type="text"
-          placeholder="Search..."
-          // value={searchTerm}
-          // onChange={handleSearch}
-        />
+     
         {flowData && (
           <div>
-            <Table className="table-border table-striped AnnuitiesClientInx">
+            <Table className="table-border table-striped  table table-hover annuities-client-inx">
               <Thead>
                 <Tr>
                   <Th>Name</Th>
@@ -150,8 +175,10 @@ const AnnuitiesClientInstruction = () => {
         <EditAnnuities
           entry={selectedEntry}
           onClose={() => setSelectedEntry(null)}
+          onEditSuccess={handleEditSuccess}
         />
       )}
+      </div>
     </>
   );
 };

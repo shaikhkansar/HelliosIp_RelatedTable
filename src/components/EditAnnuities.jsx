@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const EditAnnuitiesComponent = ({ entry, onClose }) => {
+const EditAnnuities = ({ entry, onClose,onEdit  }) => {
   const [formData, setFormData] = useState({
     AnnuitiesClientInstructionID: entry?.ClientInstructionID || '',
     Name: entry?.Name || '',
@@ -12,13 +12,14 @@ const EditAnnuitiesComponent = ({ entry, onClose }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
-    });
+    }));
   };
 
   const handleEditAnnuities = async () => {
+    
     try {
       const response = await fetch(
         'https://prod-09.centralindia.logic.azure.com:443/workflows/53cbed9ffcb64ada93f3093559b26ce4/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0SmgrwmyywrGfWZFpkj4DfRlxWJhb7S4JgUG_I-Z0UI',
@@ -40,15 +41,21 @@ const EditAnnuitiesComponent = ({ entry, onClose }) => {
       if (contentType && contentType.includes('application/json')) {
         const result = await response.json();
         setResponse(JSON.stringify(result, null, 2));
+
+
+        // Call the onEdit function in the parent component to update the state instantly
+        onEdit({ ...entry, ...formData });
       } else {
         setResponse('Non-JSON response received');
       }
   
+    } catch (error) {
+      console.error('Error during API call:', error);
+    }finally {
       // Close the modal or perform any other action after editing
       onClose();
-    } catch (error) {
-      console.error('Error fetching data:', error);
     }
+
   };
   
 
@@ -102,4 +109,4 @@ const EditAnnuitiesComponent = ({ entry, onClose }) => {
   );
 };
 
-export default EditAnnuitiesComponent;
+export default EditAnnuities;

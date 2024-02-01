@@ -38,24 +38,20 @@ const AddAnnuities = ({ onAddEntry }) => {
           .padStart(2, "0")}`
       : null;
   };
-  
 
   const addEntry = async () => {
-      
-      const formattedEntry = {
-          ...newEntry,
-          InstructionDate: formatDate(newEntry.InstructionDate),
-          AnnuitiesDueDate: formatDate(newEntry.AnnuitiesDueDate),
-          AnnuitiesID: "71238834-ccc0-ee11-9079-0022486e6d69",
-        };
-        
-        // Convert date strings to numeric values
-        formattedEntry.InstructionDate = formattedEntry.InstructionDate.toString();
-        formattedEntry.AnnuitiesDueDate = formattedEntry.AnnuitiesDueDate.toString();
-        console.log("user data", formattedEntry)
-        try {
-        const apiUrl =
-          "https://prod-12.centralindia.logic.azure.com:443/workflows/bc7faeecf9be472991c1fc22edf34600/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Cp2wPVLh-UjGXpxKgN4GH8QJUjkgyrfYnsMtPRzwNxw";
+    const formattedEntry = {
+      ...newEntry,
+      InstructionDate: formatDate(newEntry.InstructionDate),
+      AnnuitiesDueDate: formatDate(newEntry.AnnuitiesDueDate),
+      AnnuitiesID: "71238834-ccc0-ee11-9079-0022486e6d69",
+    };
+  // Update the UI instantly
+  onAddEntry(formattedEntry);
+    try {
+      const apiUrl =
+        "https://prod-12.centralindia.logic.azure.com:443/workflows/bc7faeecf9be472991c1fc22edf34600/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Cp2wPVLh-UjGXpxKgN4GH8QJUjkgyrfYnsMtPRzwNxw";
+
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -64,72 +60,19 @@ const AddAnnuities = ({ onAddEntry }) => {
         body: JSON.stringify(formattedEntry),
       });
 
-      console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
-    // Read response body once and store it in a variable
-    const responseBody = await response.text();
-    console.log('Response body:', responseBody);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Response from server:", data);
 
-    if (response.ok) {
-        let contentType = response.headers ? response.headers.get('Content-Type') : null;
-
-        // If Content-Type is null or undefined, assume JSON
-        if (!contentType) {
-          console.warn('Assuming response is in JSON format (Content-Type is null or undefined)');
-          contentType = 'application/json';
-        }
-
-      console.log('Response Content-Type:', contentType);
-
-      if (contentType.includes('application/json')) {
-        if (responseBody) {
-          try {
-            const jsonData = JSON.parse(responseBody);
-              // Check if the response contains information about the status or a link to check the status
-              if (jsonData.status === 'completed') {
-                console.log('New entry added successfully', jsonData);
-                onAddEntry(formattedEntry);
-                // You may want to set up a mechanism to check the status later using the provided link.
-                // For example, you can use a setTimeout to periodically check the status.
-                // setTimeout(async () => {
-                //   // Make a new request to the statusLink to check the updated status
-                //   const statusResponse = await fetch(jsonData.statusLink);
-        
-                //   if (statusResponse.ok) {
-                //     const updatedStatusData = await statusResponse.json();
-        
-                //     if (updatedStatusData.status === 'completed') {
-                //       console.log('New entry added successfully', updatedStatusData);
-                //       onAddEntry();
-                //     } else {
-                //       console.log('The request is still pending. Check status later.');
-                //     }
-                //   } else {
-                //     console.error('Failed to check status:', statusResponse.status);
-                //   }
-                // }, 5000); // Set the interval as needed
-              } else {
-                console.log('New entry added successfully', jsonData);
-                onAddEntry();
-              }
-            } catch (jsonError) {
-            console.error('Error parsing JSON response:', jsonError);
-          }
-        } else {
-          console.warn('Response body is empty');
-        }
+        // Update the UI by calling the onAddEntry prop
+        onAddEntry(formattedEntry);
       } else {
-        console.error('Response is not in JSON format');
+        console.error("Failed to add new entry:", response.statusText);
       }
-    } else {
-      console.error('Failed to add new entry');
+    } catch (error) {
+      console.error("Error adding new entry:", error);
     }
-  } catch (error) {
-    console.error('Error during fetch operation:', error);
-  }
-  
   };
-  console.log("new entry",newEntry.InstructionDate)
 
   return (
     <div>
@@ -148,7 +91,6 @@ const AddAnnuities = ({ onAddEntry }) => {
                   value={newEntry.Name}
                   onChange={handleInputChange}
                 />
-              
             </Td>
             <Td>
               <label>
@@ -160,7 +102,6 @@ const AddAnnuities = ({ onAddEntry }) => {
                   value={newEntry.Jurisdiction}
                   onChange={handleInputChange}
                 />
-              
             </Td>
             <Td>
               <label>
@@ -173,7 +114,6 @@ const AddAnnuities = ({ onAddEntry }) => {
                   }
                   dateFormat="yyyy-MM-dd"
                 />
-              
             </Td>
             <Td>
               <label>
@@ -186,14 +126,18 @@ const AddAnnuities = ({ onAddEntry }) => {
                   }
                   dateFormat="yyyy-MM-dd"
                 />
-             
             </Td>
             <Td>
-              <button  className="btn btn-success" type="submit" onClick={addEntry} data-bs-toggle="tooltip"
+              <button
+                className="btn btn-success"
+                type="submit"
+                onClick={addEntry}
+                data-bs-toggle="tooltip"
                 data-bs-placement="top"
-                title="Add Entry" >
-              <UserPlus  />
-             </button>
+                title="Add Entry"
+              >
+                <UserPlus />
+              </button>
             </Td>
           </Tr>
         </Tbody>
