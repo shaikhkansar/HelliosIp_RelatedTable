@@ -1,0 +1,357 @@
+/* body {
+  background-color: #282c34;
+  color: #134b5f;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+  
+} */
+
+body {
+  display: flex;
+  justify-content: center !important; /* Horizontally center the content */
+  align-items: center !important; /* Vertically center the content */
+  /* Add other CSS properties as needed */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #eeeeee;
+  padding: "10px" !important;
+}
+.submit-btn {
+  background-color: #5d8695;
+  margin-top: 10px;
+  color: white;
+}
+.main-container {
+  margin-left: -70px;
+}
+
+/* Dynamic365Entity.css */
+
+.search-container {
+  margin-left: 190px;
+  margin-top: -20px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 680px; 
+  padding: 8px; 
+  border-radius: 50%;
+  color: lightgray;
+}
+
+.search-input {
+  margin-left: -130px;
+  margin-top: 30px;
+  width: 850px;
+}
+
+.handle-search {
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  padding-right: 30px; /* Adjust the padding to make space for the icon */
+  background-size: 20px; /* Adjust the size of the icon */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Adjust the position of the icon within the input */
+}
+
+.results-container {
+  width: 850px;
+  margin-left: -130px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.table-container {
+  width: 850px;
+  margin: 15px auto;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.sticky-header {
+  margin-left: 20px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  background-color: #f2f2f2;
+}
+
+.edit-input {
+  width:170px;
+}
+
+.link2-container {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: -2px;
+  padding-top: 4px;
+  margin-right: 50px;
+}
+
+.edit-icons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-icon {
+  margin-right: 25px;
+  margin-top: 2px;
+}
+/* .edit-input {
+  width: 97px;
+} */
+
+.delete-icon {
+  margin-top: 2px;
+}
+
+.spinner {
+  margin-top: 260px;
+}
+
+.invalid-feedback {
+    font-size: 13px;
+    margin-left: 1px;
+ }
+
+
+ /* Annuities CSS */
+
+ .thTdStyle{
+  padding: 8px;
+  border: 1px solid lightgray;
+  background-color:lightgray ;
+  text-align: center;
+ }
+ .thTdStyle2{
+  padding: 8px;
+  border: 1px solid lightgray;
+  text-align: center;
+ }
+
+ /* AnnuitiesClientInstruction CSS */
+ .table-border {
+  border: 1px solid #dcdcdc;
+}
+
+/* Light gray background color for the table rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+/* Style for table header cells */
+.table-border th {
+  background-color: lightgray; 
+  border: 1px solid grey;/* Light gray background for header cells */
+}
+
+/* Style for table body cells */
+.table-border td {
+  border: 1px solid #dcdcdc; /* Light gray border for cells */
+}
+
+/* Add some padding to the cells for better appearance */
+.table-border th, .table-border td {
+  padding: 8px;
+}
+
+
+/* AddAnnuities */
+
+/* Light gray border for the table */
+.SuperResponsiveTable {
+  border-collapse: collapse;
+  border: 1px solid #dcdcdc;
+}
+
+/* Light gray background color for the table rows */
+.SuperResponsiveTable tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa;
+}
+
+/* Style for table header cells */
+.SuperResponsiveTable th {
+  background-color: #f8f9fa; /* Light gray background for header cells */
+}
+
+/* Style for table body cells */
+.SuperResponsiveTable td {
+  border: 1px solid #dcdcdc; /* Light gray border for cells */
+}
+
+/* Add some padding to the cells for better appearance */
+.SuperResponsiveTable th, .SuperResponsiveTable td {
+  padding: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  body {
+    overflow-x: show;
+    overflow-y: show;
+  }
+  .spinner {
+    margin-left: 55px !important;
+    margin-top: 220px;
+  }
+  .form-control {
+    display: block;
+    font-size: 10px !important;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.25rem;
+  }
+  .col {
+    width: 46% !important;
+    margin-top: 10px;
+  }
+  .row {
+    display: block;
+    margin-right: 17px !important;
+  }
+  .search-control {
+    width: 49% !important;
+    margin-left: -9px;
+  }
+  .search-icon {
+    position: absolute;
+    top: 7%;
+    right: 43%; /* Adjust the positioning as needed */
+    transform: translateY(-50%);
+    color: lightgray;
+  }
+  .form-control2 {
+    width: 252px !important;
+    margin-left: -9px 
+  }
+  .btn {
+    margin-top: 10px !important;
+    width: 250px;
+    height: 31px;
+  }
+
+  img,
+  svg {
+    vertical-align: middle;
+    margin-top: -3px;
+  }
+  .table {
+    width: 238px !important;
+    font-size: 11px;
+  }
+  .heading {
+    font-size: 11px !important;
+  }
+  .results-container {
+    width: 350px !important;
+    margin-left: 56px !important;
+  }
+  .sticky-header {
+    font-size: 10px !important;
+  }
+  .user-td {
+    font-size: 12px;
+  }
+  .edit-icon {
+    margin-right: 9px !important;
+  }
+  .successpopup {
+    font-size: 11px;
+    width: 223px !important;
+    margin-left: 10px;
+  }
+
+  .table-container {
+    /* Add your styles for small screens here */
+    overflow-x: auto;
+    margin-left: 92px;
+  }
+
+  .table-container th,
+  .table-container td {
+    /* Add your styles for table headers and cells on small screens here */
+    white-space: nowrap;
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  /* link */
+  img,
+  svg {
+    vertical-align: middle;
+    margin-bottom: 7px;
+    height: 15px;
+    margin-left: -10px;
+  }
+
+  .edit-icon {
+    margin-right: 9px !important;
+    margin-right: 50px !important;
+    height: 15px;
+  }
+
+  .delete-icon {
+    margin-top: 2px;
+    margin-left: -29px;
+    height: 15px;
+  }
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 98vw;
+    height: 100vh;
+    background-color: #000;
+    margin: 0px;
+  }
+  .modal-content {
+    position: relative;
+    top: 66px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: -1;
+    margin-left: -495px;
+    font-size: 10px;
+  }
+  .search-icon{
+   margin-left: -16rem;
+   margin-top: 1px;
+  }
+  .invalid-feedback {
+    font-size: 11px;
+  }
+
+  .table>:not(caption)>*>* {
+    font-size: 13px;
+   }
+  .table-striped{
+    margin-left: -2%;
+  }
+
+  .heading{
+    font-size: 12px!important;
+  }
+ }
