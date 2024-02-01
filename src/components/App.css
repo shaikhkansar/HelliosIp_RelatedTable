@@ -200,6 +200,33 @@ body {
   padding: 8px;
 }
 
+/* instructionProject Css */
+
+.tablestyle{
+  background-color: white;
+  width: 50%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-left: 450px;
+}
+
+.thstyle{
+
+  background-color: lightgray;
+  padding: 8px;
+  border-bottom: 1px solid lightgray;
+}
+
+.thTdstyle{
+  padding: 8px;
+  border: 0px solid lightgray;
+}
+
+.cellstyle{
+  padding: 8px;
+  border-bottom: 1px solid lightgray;
+}
+
 @media only screen and (max-width: 600px) {
 
   body {
@@ -359,4 +386,68 @@ body {
   .heading{
     font-size: 12px!important;
   }
+
+/* Annuities REsponsive CSS Property */
+
+  .table-striped{
+    margin-left:-103px;
+    width: 52%;
+    font-size: 13px;
+    
+}
+.h4, h4 {
+  font-size: calc(1.275rem + .3vw);
+  margin-left: -103px;
+  font-size: 13px;
+}
+
+/* instructionProject Css */
+
+.tablestyle{
+  background-color: white;
+  width: 26%;
+  margin-left: 345px;
+  font-size: 12px;
+}
+
+.thstyle{
+
+  background-color: lightgray;
+  padding: 8px;
+}
+
+.thTdstyle{
+  padding: 8px;
+}
+
+/* AddAnnuities Responsive CSS property */
+.addannuities{
+  margin-left: 414px;
+  width: 24%;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-left: -81px;
+}
+
+
+/* AnnuitiesClientInx rcss */
+.AnnuitiesClientInx{
+  margin-left: 414px;
+  width: calc(24% - 1px);
+  font-size: 12.3px;
+}
+
+.btn-success{
+  margin-left: -135px;
+}
+
+.add-button{
+  margin-left: 50px;
+}
+
+
  }

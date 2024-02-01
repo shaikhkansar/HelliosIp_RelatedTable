@@ -4,7 +4,6 @@ import { UserPlus } from "react-feather";
 import "react-datepicker/dist/react-datepicker.css";
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css"
-import "react-datepicker/dist/react-datepicker.css";
 import {
   Table,
   Thead,
@@ -136,34 +135,37 @@ const AddAnnuities = ({ onAddEntry }) => {
     <div>
       <h4>Annuities - (Annuities 1)</h4>
       <h5>Add Client Instruction </h5>
-      <Table className="SuperResponsiveTable table-border table-striped">
+      <Table className="SuperResponsiveTable table-border table-striped addannuities">
         <Tbody>
           <Tr>
             <Td>
               <label>
                 Name:
+                </label>
                 <input
                   type="text"
                   name="Name"
                   value={newEntry.Name}
                   onChange={handleInputChange}
                 />
-              </label>
+              
             </Td>
             <Td>
               <label>
                 Jurisdiction:
+                </label>
                 <input
                   type="text"
                   name="Jurisdiction"
                   value={newEntry.Jurisdiction}
                   onChange={handleInputChange}
                 />
-              </label>
+              
             </Td>
             <Td>
               <label>
                 Instruction Date:
+                </label>
                 <DatePicker
                   selected={newEntry.InstructionDate}
                   onChange={(date) =>
@@ -171,11 +173,12 @@ const AddAnnuities = ({ onAddEntry }) => {
                   }
                   dateFormat="yyyy-MM-dd"
                 />
-              </label>
+              
             </Td>
             <Td>
               <label>
                 Annuities Due Date:
+                </label>
                 <DatePicker
                   selected={newEntry.AnnuitiesDueDate}
                   onChange={(date) =>
@@ -183,18 +186,14 @@ const AddAnnuities = ({ onAddEntry }) => {
                   }
                   dateFormat="yyyy-MM-dd"
                 />
-              </label>
+             
             </Td>
             <Td>
-              <button  className="btn btn-success" type="submit" onClick={addEntry} >
-              <UserPlus  />
-              {/* type="submit"
-                className="btn btn-success"
-                data-bs-toggle="tooltip"
+              <button  className="btn btn-success" type="submit" onClick={addEntry} data-bs-toggle="tooltip"
                 data-bs-placement="top"
-                title="Add Employees"
-                onClick={handleSubmit} */}
-              </button>
+                title="Add Entry" >
+              <UserPlus  />
+             </button>
             </Td>
           </Tr>
         </Tbody>

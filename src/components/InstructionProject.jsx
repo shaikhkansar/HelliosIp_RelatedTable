@@ -58,38 +58,17 @@ const InstructionProject = ({ chatid }) => {
     };
   }, [chatid]);
 
-  const tableStyle = {
-    width: '50%',
-    border: '1px solid lightgray',
-    borderRadius: '5px',
-    marginLeft: '450px',
-  };
-
-  const thStyle = {
-    background: 'lightgray',
-    padding: '8px',
-    borderBottom: '1px solid lightgray',
-  };
-
-  const thTdStyle = {
-    padding: '8px',
-    border: '1px solid lightgray',
-  };
-
-  const cellStyle = {
-    padding: '8px',
-    borderBottom: '1px solid lightgray',
-  };
-
-  return (
+   return (
     <div>
       {loading ? (
-        <p></p>
+        <div className="spinner-border text-primary spinner" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
       ) : (
-        <Table style={tableStyle}>
+        <Table className="tablestyle">
           <Thead>
             <Tr>
-              <Th style={thStyle} colSpan="2">
+              <Th className="thstyle" colSpan="2">
                 Instruction Project
               </Th>
             </Tr>
@@ -98,8 +77,8 @@ const InstructionProject = ({ chatid }) => {
             {data && data.length > 0 ? (
               Object.keys(data[0]).map((property, index) => (
                 <Tr key={index}>
-                  <Td style={thTdStyle}>{property}</Td>
-                  <Td style={thTdStyle}>{data[0][property]}</Td>
+                  <Td className="thTdstyle">{property}</Td>
+                  <Td className="thTdstyle">{data[0][property]}</Td>
                 </Tr>
               ))
             ) : (

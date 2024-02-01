@@ -4,6 +4,7 @@ import Dynamics365Entity from "./Dynamics365Entity";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import InstructionProject from "./InstructionProject";
+import "./App.css"
 
 const Anuuities = ({ chatid }) => {
   const [instructionType, setInstructionType] = useState(null);
@@ -100,7 +101,7 @@ const Anuuities = ({ chatid }) => {
             <Tr>
               <Td>
                 {" "}
-                <h4>Annuities for the above Instruction Type</h4>
+                <p style={{fontSize:"18px", fontWeight:"bold"}}>Annuities for the above Instruction Type</p>
               </Td>
             </Tr>
             <Table className="table-striped">

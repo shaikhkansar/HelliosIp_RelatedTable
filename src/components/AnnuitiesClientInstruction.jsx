@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate} from "react-router-dom";
 import AddAnnuities from "./AddAnnuities";
-import { Edit } from "react-feather";
+import { Edit, SkipBack } from "react-feather";
 import EditAnnuities from "./EditAnnuities";
 import DeleteAnnuities from "./DeleteAnnuities";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./App.css";
+import InstructionProject from "./InstructionProject";
 
 const AnnuitiesClientInstruction = () => {
   const [flowData, setFlowData] = useState(null);
   const [selectedEntry, setSelectedEntry] = useState(null);
+
+  const navigate = useNavigate();
 
   const fetchData = async () => {
     const apiUrl =
@@ -67,20 +71,43 @@ const AnnuitiesClientInstruction = () => {
     );
   };
   console.log("date format", flowData);
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   return (
     <>
+ <button
+          onClick={handleGoBack}
+          className="btn add-button"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Go Back"
+          style={{ display: 'flex', alignItems: 'center', padding: '11px', marginLeft:"837px", marginBottom:"-100px", color:"white" }}
+        >
+          <SkipBack style={{ marginRight: '5px' }} />
+          Go back
+        </button>
+        
       <h3>Instruction Project - ( England )</h3>
       <AddAnnuities onAddEntry={handleAddEntry} />
+      
       <div>
+      <input
+          type="text"
+          placeholder="Search..."
+          // value={searchTerm}
+          // onChange={handleSearch}
+        />
         {flowData && (
           <div>
-            <Table className="table-border table-striped">
+            <Table className="table-border table-striped AnnuitiesClientInx">
               <Thead>
                 <Tr>
                   <Th>Name</Th>
                   <Th>Jurisdiction</Th>
                   <Th>Instruction Date</Th>
-                  <Th>Annuities Due Date</Th>
+                  <Th>Annuities DueDate</Th>
                   <Th>Action</Th>
                 </Tr>
               </Thead>
@@ -96,21 +123,21 @@ const AnnuitiesClientInstruction = () => {
                       {new Date(item.AnnuitiesDueDate).toLocaleDateString()}
                     </Td>
                     <Td>
-                    <Td>
-  <div style={{ display: "flex", alignItems: "center" }}>
-  
-      
-    
-      <Edit color="#5b5fc7" onClick={() => handleEditEntry(item)}
-      style={{ cursor: "pointer", marginRight: "18px" }}/>
-    
-    <DeleteAnnuities
-      key={item.ClientInstructionID}
-      entryId={item.ClientInstructionID}
-      onDeleteEntry={handleDeleteEntry}
-    />
-  </div>
-</Td>
+                      <Td>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <Edit
+                            color="#5b5fc7"
+                            onClick={() => handleEditEntry(item)}
+                            style={{ cursor: "pointer", marginRight: "18px" }}
+                          />
+
+                          <DeleteAnnuities
+                            key={item.ClientInstructionID}
+                            entryId={item.ClientInstructionID}
+                            onDeleteEntry={handleDeleteEntry}
+                          />
+                        </div>
+                      </Td>
                     </Td>
                   </Tr>
                 ))}

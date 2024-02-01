@@ -5,6 +5,7 @@ import Annuities from "./Anuuities";
 import MeetingSummary from "./MeetingSummary";
 import Dynamics365Entity from "./Dynamics365Entity";
 import InstructionProject from "./InstructionProject";
+import ProjectInstruction from "./ProjectInstruction";
 class Tab extends React.Component {
   constructor(props) {
     super(props);
@@ -54,6 +55,7 @@ class Tab extends React.Component {
         {/* {<MeetingSummary chatid={chatId} />} */}
         {/* <Dynamics365Entity/> */}
         <InstructionProject chatid={chatId} />
+        {/* <ProjectInstruction chatid={chatId}/> */}
         <Annuities chatid={chatId} />
       </div>
     );
