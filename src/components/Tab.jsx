@@ -1,7 +1,7 @@
 import React from "react";
 import { app, teamsCore } from "@microsoft/teams-js";
 import "./App.css";
-import Annuities from "./Anuuities"
+import Annuities from "./Anuuities";
 import MeetingSummary from "./MeetingSummary";
 import Dynamics365Entity from "./Dynamics365Entity";
 import InstructionProject from "./InstructionProject";
@@ -53,10 +53,8 @@ class Tab extends React.Component {
         {/* <p>{chatId}</p> */}
         {/* {<MeetingSummary chatid={chatId} />} */}
         {/* <Dynamics365Entity/> */}
-        <div>
         <InstructionProject chatid={chatId} />
         <Annuities chatid={chatId} />
-        </div>
       </div>
     );
   }

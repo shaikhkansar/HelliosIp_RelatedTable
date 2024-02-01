@@ -66,16 +66,17 @@ const Anuuities = ({ chatid }) => {
     };
   }, [chatid]);
 
-    return (
+  return (
     <div className="App" style={{ marginTop: "40px", marginRight: "60px" }}>
       {error ? (
         <p style={{ marginLeft: "80px", color: "red", fontSize: "16px" }}>
           {error}
         </p>
       ) : loading ? (
-        <div className="spinner-border text-primary spinner" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+        // <div className="spinner-border text-primary spinner" role="status">
+        //   <span className="visually-hidden">Loading...</span>
+        // </div>
+        <p></p>
       ) : (
         <>
           <h6
@@ -93,12 +94,22 @@ const Anuuities = ({ chatid }) => {
             {/* Flow_GetInstructionProjectIDFromChatID */}
           </h6>
           {/* <h5 style={{ marginLeft: "350px", marginTop: "20px", width: "520px", fontSize:"35px" }}>List of Annuities</h5> */}
-          <div style={{marginLeft: "448px", marginTop: "20px", width: "53.5%"}}>
+          <div
+            style={{ marginLeft: "448px", marginTop: "20px", width: "53.5%" }}
+          >
+            <Tr>
+              <Td>
+                {" "}
+                <h4>Annuities for the above Instruction Type</h4>
+              </Td>
+            </Tr>
             <Table className="table-striped">
               <Thead>
                 <Tr>
                   {Object.keys(instructionType[0]).map((property) => (
-                    <Th key={property} className="thTdStyle">{property}</Th>
+                    <Th key={property} className="thTdStyle">
+                      {property}
+                    </Th>
                   ))}
                 </Tr>
               </Thead>

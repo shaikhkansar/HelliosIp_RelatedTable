@@ -22,7 +22,7 @@ const AnnuitiesClientInstruction = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          _crea6_annuities_value: "d4fe221f-99bf-ee11-9079-0022486e6d69",
+          _crea6_annuities_value: "71238834-ccc0-ee11-9079-0022486e6d69",
         }),
       });
 
