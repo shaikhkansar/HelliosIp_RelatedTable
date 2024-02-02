@@ -42,9 +42,10 @@ const EditAnnuities = ({ entry, onClose,onEdit  }) => {
         const result = await response.json();
         setResponse(JSON.stringify(result, null, 2));
 
+        const updatedEntry = await response.json();
+        console.log('Updated Entry:', updatedEntry);
 
-        // Call the onEdit function in the parent component to update the state instantly
-        onEdit({ ...entry, ...formData });
+        onEdit(updatedEntry);
       } else {
         setResponse('Non-JSON response received');
       }

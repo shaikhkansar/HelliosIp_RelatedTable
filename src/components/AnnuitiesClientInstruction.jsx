@@ -43,7 +43,7 @@ const AnnuitiesClientInstruction = () => {
 
   useEffect(() => {
     fetchData();
-  }, []); // Run once when the component mounts
+  }, [flowData]); // Run once when the component mounts
 
   const handleAddEntry = (newEntry) => {
     console.log("New entry received:", newEntry);
@@ -69,6 +69,7 @@ const AnnuitiesClientInstruction = () => {
           : entry
       )
     );
+    setSelectedEntry(null); // Reset the selected entry after editing
      };
 
   const handleEditModalClose = () => {
