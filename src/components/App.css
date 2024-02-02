@@ -176,6 +176,14 @@ body {
 .table-striped{
   margin-top:10px;}
 
+  .addentry{
+    margin-top: 10px;
+  }
+
+  .backbutton{
+    margin-left: -20px;
+}
+
 
 /* Light gray border for the table */
 .SuperResponsiveTable {
@@ -245,7 +253,7 @@ margin-top: 10px;
     overflow-y: show;
   }
   .spinner {
-    margin-left: 55px !important;
+    margin-left: 70px !important;
     margin-top: 220px;
   }
   .form-control {
@@ -289,11 +297,11 @@ margin-top: 10px;
     height: 31px;
   }
 
-  img,
+  /* img,
   svg {
     vertical-align: middle;
     margin-top: -3px;
-  }
+  } */
   .table {
     width: 238px !important;
     font-size: 11px;
@@ -311,9 +319,9 @@ margin-top: 10px;
   .user-td {
     font-size: 12px;
   }
-  .edit-icon {
+  /* .edit-icon {
     margin-right: 9px !important;
-  }
+  } */
   .successpopup {
     font-size: 11px;
     width: 223px !important;
@@ -335,19 +343,19 @@ margin-top: 10px;
   }
 
   /* link */
-  img,
+  /* img,
   svg {
     vertical-align: middle;
     margin-bottom: 7px;
     height: 15px;
     margin-left: -10px;
-  }
+  } */
 
-  .edit-icon {
+  /* .edit-icon {
     margin-right: 9px !important;
     margin-right: 50px !important;
     height: 15px;
-  }
+  } */
 
   .delete-icon {
     margin-top: 2px;
@@ -379,10 +387,10 @@ margin-top: 10px;
     margin-left: -495px;
     font-size: 10px;
   }
-  .search-icon{
+  /* .search-icon{
    margin-left: -16rem;
    margin-top: 1px;
-  }
+  } */
   .invalid-feedback {
     font-size: 11px;
   }
@@ -390,9 +398,9 @@ margin-top: 10px;
   .table>:not(caption)>*>* {
     font-size: 13px;
    }
-  .table-striped{
+  /* .table-striped{
     margin-left: -2%;
-  }
+  } */
 
   .heading{
     font-size: 12px!important;
@@ -400,13 +408,11 @@ margin-top: 10px;
 
 /* Annuities REsponsive CSS Property */
 
-  .table-striped{
-    margin-left:-103px;
-    width: 52%;
-    font-size: 13px;
-    margin-top: 10px;
-
-    
+.table-striped{
+  margin-left:-103px;
+  width: 52%;
+  font-size: 13px;
+  margin-top: 10px;
 }
 .h4, h4 {
   font-size: calc(1.275rem + .3vw);
@@ -435,8 +441,8 @@ margin-top: 10px;
 
 /* AddAnnuities Responsive CSS property */
 .addannuities{
-  margin-left: 414px;
-  width: 24%;
+  margin-left: 301px;
+  width: 30%;
 }
 
 button, input, optgroup, select, textarea {
@@ -449,9 +455,34 @@ button, input, optgroup, select, textarea {
 
 /* AnnuitiesClientInx rcss */
 .annuities-client-inx{
-  margin-left: 415px;
-  width: calc(25% - 1px)!important;
-  font-size: 12.3px;
+  margin-left:301px;
+  width: calc(30% - 1px)!important;
+}
+
+.table>:not(caption)>*>* {
+  font-size: 12px;
+}
+
+/* edit and delete icon css  */
+img, svg {
+  vertical-align: middle;
+  margin-left: -15px;
+  
+}
+
+.backbutton{
+  margin-left: px!important;
+  margin-top: 30px;
+  font-size: 12px!important;
+}
+element.style {
+  display: flex;
+  align-items: center;
+  padding: 11px;
+  margin-left: 837px;
+  margin-bottom: -100px;
+  color: blue;
+  font-size: 12px;
 }
 
 .btn-success{
@@ -469,7 +500,7 @@ button, input, optgroup, select, textarea {
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  margin-left: 420px;
+  margin-left:305px;
   font-size: 13px!important;
 }
 
@@ -484,17 +515,24 @@ button, input, optgroup, select, textarea {
   border: 1px solid #ced4da;
   appearance: none;
   border-radius: 0.25rem;
-  margin-left: 415px;
-  width: 23.7%!important;
+  margin-left: 301px;
+  width: 30%!important;
   margin-top: 0px;
 }
 
 .search-icon{
-  margin-top: 415px;
-  margin-left: -450px;
+  margin-top: 470px;
+  margin-left: -440px;
 }
 
-.back-btn{
-/* margin-left: 150px!important; */
+.backbutton{
+margin-left: -400px!important;
+margin-bottom: 24px;
 }
+
+/* ProjectInstruction Css */
+.hding{
+  margin-right: -10px!important;
+}
+
  }

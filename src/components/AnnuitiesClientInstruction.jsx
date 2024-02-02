@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AddAnnuities from "./AddAnnuities";
-import { Edit, SkipBack,Search } from "react-feather";
+import { Edit, SkipBack, Search } from "react-feather";
 import EditAnnuities from "./EditAnnuities";
 import DeleteAnnuities from "./DeleteAnnuities";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./App.css";
-import InstructionProject from "./InstructionProject";
 
-const AnnuitiesClientInstruction = () => {
+
+const AnnuitiesClientInstruction = ({chatId}) => {
   const [flowData, setFlowData] = useState(null);
   const [selectedEntry, setSelectedEntry] = useState(null);
 
@@ -70,7 +70,7 @@ const AnnuitiesClientInstruction = () => {
       )
     );
     setSelectedEntry(null); // Reset the selected entry after editing
-     };
+  };
 
   const handleEditModalClose = () => {
     // Reset the selected entry after editing is done or modal is closed
@@ -80,106 +80,117 @@ const AnnuitiesClientInstruction = () => {
   const handleDeleteEntry = (entryId) => {
     // Update the UI by removing the deleted entry from flowData
     setFlowData((prevFlowData) =>
-      prevFlowData.filter((entry) => entry.ClientInstructionID !== entryId)
+    prevFlowData.filter((entry) => entry.ClientInstructionID !== entryId)
     );
   };
-  console.log("date format", flowData);
-
+  // console.log("date format", flowData);
+  
   const handleGoBack = () => {
     navigate(-1);
   };
-
   
   return (
     <>
-     <div >
-    <div>
- <button
-          onClick={handleGoBack}
-          className="btn add-button"
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          title="Go Back"
-          style={{ display: 'flex', alignItems: 'center', padding: '11px', marginLeft:"837px", marginBottom:"-100px", color:"white" }}
-        >
-          <SkipBack style={{ marginRight: '5px' }} />
-          Go back
-        </button>
-        </div>
-        </div>
-   <div>
-      <h3>Instruction Project - ( England )</h3>
-      <AddAnnuities onAddEntry={handleAddEntry} />
-      <div className="handle-search">
-              <div className="search-icon">
-                <Search />
-              </div>
-              <input
-                type="text"
-                className="form-control search-control"
-                placeholder="Search"
-                // value={searchQuery}
-                // onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              
-            </div>
+   
       <div>
-     
-        {flowData && (
-          <div>
-            <Table className="table-border table-striped  table table-hover annuities-client-inx">
-              <Thead>
-                <Tr>
-                  <Th>Name</Th>
-                  <Th>Jurisdiction</Th>
-                  <Th>Instruction Date</Th>
-                  <Th>Annuities DueDate</Th>
-                  <Th>Action</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {flowData.map((item) => (
-                  <Tr key={item.ClientInstructionID}>
-                    <Td>{item.Name}</Td>
-                    <Td>{item.Jurisdiction}</Td>
-                    <Td>
-                      {new Date(item.InstructionDate).toLocaleDateString()}
-                    </Td>
-                    <Td>
-                      {new Date(item.AnnuitiesDueDate).toLocaleDateString()}
-                    </Td>
-                    <Td>
-                      <Td>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <Edit
-                            color="#5b5fc7"
-                            onClick={() => handleEditEntry(item)}
-                            style={{ cursor: "pointer", marginRight: "18px" }}
-                          />
-
-                          <DeleteAnnuities
-                            key={item.ClientInstructionID}
-                            entryId={item.ClientInstructionID}
-                            onDeleteEntry={handleDeleteEntry}
-                          />
-                        </div>
-                      </Td>
-                    </Td>
-                  </Tr>
-                ))}
-              </Tbody>
-            </Table>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: "11px",
+            marginLeft: "837px",
+            marginBottom: "-100px",
+            color: "blue",
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}
+          onClick={handleGoBack}
+        >
+          <SkipBack
+            style={{ marginRight: "5px" }}
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Go Back"
+            className="backbutton"
+          />
+          Go to back
+        </div>
+      </div>
+      <div>
+        {/* <h3>Instruction Project - ( England )</h3> */}
+        <AddAnnuities onAddEntry={handleAddEntry} />
+        
+        <div className="handle-search">
+          <div className="search-icon">
+            <Search />
           </div>
+          <input
+            type="text"
+            className="form-control search-control"
+            placeholder="Search"
+            // value={searchQuery}
+            // onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+        <div>
+          {flowData && (
+            <div>
+              <Table className="table-border table-striped  table table-hover annuities-client-inx">
+                <Thead>
+                  <Tr>
+                    <Th>Name</Th>
+                    <Th>Jurisdiction</Th>
+                    <Th>Instruction Date</Th>
+                    <Th>Annuities DueDate</Th>
+                    <Th>Action</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {flowData.map((item) => (
+                    <Tr key={item.ClientInstructionID}>
+                      <Td>{item.Name}</Td>
+                      <Td>{item.Jurisdiction}</Td>
+                      <Td>
+                        {new Date(item.InstructionDate).toLocaleDateString()}
+                      </Td>
+                      <Td>
+                        {new Date(item.AnnuitiesDueDate).toLocaleDateString()}
+                      </Td>
+                      <Td>
+                        <Td>
+                          <div
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <Edit
+                              color="#5b5fc7"
+                              onClick={() => handleEditEntry(item)}
+                              style={{ cursor: "pointer", marginRight: "18px" }}
+                            />
+                            <DeleteAnnuities
+                              key={item.ClientInstructionID}
+                              entryId={item.ClientInstructionID}
+                              onDeleteEntry={handleDeleteEntry}
+                            />
+                          </div>
+                        </Td>
+                      </Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </div>
+          )}
+          
+        </div>
+        {selectedEntry && (
+          <EditAnnuities
+            entry={selectedEntry}
+            onClose={() => setSelectedEntry(null)}
+            onEditSuccess={handleEditSuccess}
+          />
         )}
       </div>
-      {selectedEntry && (
-        <EditAnnuities
-          entry={selectedEntry}
-          onClose={() => setSelectedEntry(null)}
-          onEditSuccess={handleEditSuccess}
-        />
-      )}
-      </div>
+     
     </>
   );
 };

@@ -4,7 +4,8 @@ import "./App.css";
 import Annuities from "./Anuuities";
 import InstructionProject from "./InstructionProject";
 import ProjectInstruction from "./ProjectInstruction";
-class Tab extends React.Component {
+import AnuuitiesProjectId from "./AnuuitiesProjectId";
+class Tabs extends React.Component {
   constructor(props) {
     super(props);
 
@@ -52,13 +53,13 @@ class Tab extends React.Component {
         {/* <p>{chatId}</p> */}
         {/* {<MeetingSummary chatid={chatId} />} */}
         {/* <Dynamics365Entity/> */}
-        <InstructionProject chatid={chatId} />
-        {/* <AnuuitiesProjectId chatid={chatId}/> */}
-        <Annuities chatid={chatId} />
-        {/* <ProjectInstruction chatid={chatId} /> */}
+        {/* <InstructionProject chatid={chatId} /> */}
+        {/* <Annuities chatid={chatId} /> */}
+        <ProjectInstruction chatid={chatId} />
+        <AnuuitiesProjectId chatid={chatId}/>
       </div>
     );
   }
 }
 
-export default Tab;
+export default Tabs;

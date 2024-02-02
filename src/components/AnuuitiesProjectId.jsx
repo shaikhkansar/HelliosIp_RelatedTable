@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-const ProjectInstruction = ({ chatid }) => {
+const AnuuitiesProjectId = ({ chatid }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
@@ -15,7 +15,7 @@ const ProjectInstruction = ({ chatid }) => {
         const encodedData = encodeURIComponent(chatid);
         const modifiedEncodedData = encodedData.replace(/%3A/g, "%3a");
         const apiUrl =
-          "https://prod-26.centralindia.logic.azure.com:443/workflows/efc9719714db49568aa4f67696de78f5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fi5wVx8v9we_OXJrlBLFch_JNgrGJRN_g3Vp7fD7NpM";
+          "https://prod-06.centralindia.logic.azure.com:443/workflows/007a40f3f0b64dd481f455a120c965d5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=MTBv22mvAZWPl0fU4nZ4L4EcID8yBlT7EvugRcuSE0k";
 
         const response = await fetch(apiUrl, {
           method: "POST",
@@ -49,17 +49,40 @@ const ProjectInstruction = ({ chatid }) => {
     };
   }, [chatid]);
 
-   return (
+  const tableStyle = {
+    width: "50%",
+    border: "1px solid lightgray",
+    borderRadius: "5px",
+    marginLeft: "450px",
+  };
+
+  const thStyle = {
+    background: "lightgray",
+    padding: "8px",
+    borderBottom: "1px solid lightgray",
+  };
+
+  const thTdStyle = {
+    padding: "8px",
+    border: "1px solid lightgray",
+  };
+
+  const cellStyle = {
+    padding: "8px",
+    borderBottom: "1px solid lightgray",
+  };
+
+  return (
     <div>
       {data && data.length > 0 ? (
-        <div className="hding">
+        <div>
           {data && data.length > 0 ? (
-            <div >
+            <div>
               {Object.keys(data[0]).map(
                 (property, index) =>
                   typeof data[0][property] !== "object" &&
-                  property === "Jurisdiction" && (
-                    <div key={index} >
+                  property === "InstructionType" && (
+                    <div key={index}>
                       <strong>{property}:</strong> {data[0][property]}
                     </div>
                   )
@@ -76,4 +99,4 @@ const ProjectInstruction = ({ chatid }) => {
   );
 };
 
-export default ProjectInstruction;
+export default AnuuitiesProjectId;

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import { UserPlus } from "react-feather";
 import "react-datepicker/dist/react-datepicker.css";
+import { UserPlus } from "react-feather";
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css"
+import  Tabs  from "./Tabs";
 import {
   Table,
   Thead,
@@ -76,8 +77,8 @@ const AddAnnuities = ({ onAddEntry }) => {
 
   return (
     <div>
-      <h4>Annuities - (Annuities 1)</h4>
-      <h5>Add Client Instruction </h5>
+       <Tabs/>
+      <h5 style={{marginTop:"20px"}}>Add Client Instruction </h5>
       <Table className="SuperResponsiveTable table-border table-striped addannuities">
         <Tbody>
           <Tr>
@@ -129,7 +130,7 @@ const AddAnnuities = ({ onAddEntry }) => {
             </Td>
             <Td>
               <button
-                className="btn btn-success"
+                className="btn btn-success addentry"
                 type="submit"
                 onClick={addEntry}
                 data-bs-toggle="tooltip"

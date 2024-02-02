@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Dynamics365Entity from "./Dynamics365Entity";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import InstructionProject from "./InstructionProject";
 import "./App.css"
 
 const Anuuities = ({ chatid }) => {
@@ -53,7 +51,7 @@ const Anuuities = ({ chatid }) => {
         console.log("Meeting details:", data.value);
       } catch (error) {
         if (isMounted) {
-          setError("Error fetching meeting details");
+          setError(`Error fetching meeting details: ${error.message}`);
           setLoading(false);
         }
         console.error("Error fetching meeting details", error);
@@ -98,45 +96,51 @@ const Anuuities = ({ chatid }) => {
           <div
             style={{ marginLeft: "448px", marginTop: "20px", width: "53.5%" }}
           >
-            <Tr>
-              <Td >
+           <Tr>
+              <Td>
                 {" "}
-                <p style={{fontSize:"18px", fontWeight:"bold"}} className="hdng">Annuities for the above Instruction Type</p>
+                <p style={{ fontSize: "18px", fontWeight: "bold" }} className="hdng">
+                  Annuities for the above Instruction Type
+                </p>
               </Td>
             </Tr>
-            <Table className="table-striped table table-hover">
-              <Thead>
-                <Tr>
-                  {Object.keys(instructionType[0]).map((property) => (
-                    <Th key={property} className="thTdStyle">
-                      {property}
-                    </Th>
-                  ))}
-                </Tr>
-              </Thead>
-              <Tbody>
-                {instructionType.map((instruction, index) => (
-                  <Tr key={index}>
-                    {Object.values(instruction).map((value, valueIndex) => (
-                      <Td key={valueIndex} className="thTdStyle2">
-                        {valueIndex === 0 ? (
-                          <Link
-                            style={{ textDecoration: "none" }}
-                            to={{
-                              pathname: "/annuities-client-instruction",
-                            }}
-                          >
-                            <div>{value}</div>{" "}
-                          </Link>
-                        ) : (
-                          <div>{value.split(" ").join("\n")}</div>
-                        )}
-                      </Td>
+            {Array.isArray(instructionType) ? (
+              <Table className="table-striped table table-hover">
+                <Thead>
+                  <Tr>
+                    {Object.keys(instructionType[0]).map((property) => (
+                      <Th key={property} className="thTdStyle">
+                        {property}
+                      </Th>
                     ))}
                   </Tr>
-                ))}
-              </Tbody>
-            </Table>
+                </Thead>
+                <Tbody>
+                  {instructionType.map((instruction, index) => (
+                    <Tr key={index}>
+                      {Object.values(instruction).map((value, valueIndex) => (
+                        <Td key={valueIndex} className="thTdStyle2">
+                          {valueIndex === 0 ? (
+                            <Link
+                              style={{ textDecoration: "none" }}
+                              to={{
+                                pathname: "/annuities-client-instruction",
+                              }}
+                            >
+                              <div>{value}</div>{" "}
+                            </Link>
+                          ) : (
+                            <div>{value.split(" ").join("\n")}</div>
+                          )}
+                        </Td>
+                      ))}
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            ) : (
+              <p>No data available</p>
+            )}
           </div>
         </>
       )}
