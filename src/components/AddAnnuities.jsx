@@ -22,7 +22,7 @@ const AddAnnuities = ({ onAddEntry }) => {
     InstructionDate: "",
     AnnuitiesDueDate: "",
   });
-
+// Test 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewEntry((prevEntry) => ({
@@ -45,7 +45,7 @@ const AddAnnuities = ({ onAddEntry }) => {
       ...newEntry,
       InstructionDate: formatDate(newEntry.InstructionDate),
       AnnuitiesDueDate: formatDate(newEntry.AnnuitiesDueDate),
-      AnnuitiesID: "71238834-ccc0-ee11-9079-0022486e6d69",
+      AnnuitiesID: "5da82587-cec1-ee11-9079-0022486e6d69",
     };
   // Update the UI instantly
   onAddEntry(formattedEntry);
@@ -77,8 +77,8 @@ const AddAnnuities = ({ onAddEntry }) => {
 
   return (
     <div>
-       <Tabs/>
-      <h5 style={{marginTop:"20px"}}>Add Client Instruction </h5>
+       <Tabs />
+      <h5 style={{marginTop:"40px"}}>Add Client Instruction </h5>
       <Table className="SuperResponsiveTable table-border table-striped addannuities">
         <Tbody>
           <Tr>
