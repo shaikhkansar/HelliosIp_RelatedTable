@@ -55,7 +55,7 @@ class Tabs extends React.Component {
         {/* <Dynamics365Entity/> */}
         {/* <InstructionProject chatid={chatId} /> */}
         {/* <Annuities chatid={chatId} /> */}
-        <ProjectInstruction chatid={chatId} />
+        <ProjectInstruction chatid={chatId}/>
         <AnuuitiesProjectId chatid={chatId}/>
       </div>
     );

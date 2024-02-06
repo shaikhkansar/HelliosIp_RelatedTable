@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddAnnuities from "./AddAnnuities";
-import { Edit, SkipBack, Search } from "react-feather";
+import { Edit, SkipBack, Search, Link2 } from "react-feather";
 import EditAnnuities from "./EditAnnuities";
 import DeleteAnnuities from "./DeleteAnnuities";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./App.css";
 
-
-const AnnuitiesClientInstruction = ({chatId}) => {
+const AnnuitiesClientInstruction = () => {
   const [flowData, setFlowData] = useState(null);
   const [selectedEntry, setSelectedEntry] = useState(null);
 
-  const navigate = useNavigate();
+ 
 
-  const fetchData = async () => {
-    const apiUrl =
+    const fetchData = async () => {
+      const apiUrl =
       "https://prod-31.centralindia.logic.azure.com:443/workflows/b099fe3a64ed4c2b980dba7badc2c13b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=KTxIadchgbpo8oEKAzIe48KGgEmEpW4NRTXAOnFd-g0";
+    
 
     try {
       const response = await fetch(apiUrl, {
@@ -26,7 +26,7 @@ const AnnuitiesClientInstruction = ({chatId}) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          _crea6_annuities_value: "71238834-ccc0-ee11-9079-0022486e6d69",
+          _crea6_annuities_value: "5da82587-cec1-ee11-9079-0022486e6d69",
         }),
       });
 
@@ -37,13 +37,13 @@ const AnnuitiesClientInstruction = ({chatId}) => {
         console.error("Failed to fetch data from Power Automate flow");
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data:", error.message);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, [flowData]); // Run once when the component mounts
+  }, []); // Run once when the component mounts
 
   const handleAddEntry = (newEntry) => {
     console.log("New entry received:", newEntry);
@@ -80,46 +80,19 @@ const AnnuitiesClientInstruction = ({chatId}) => {
   const handleDeleteEntry = (entryId) => {
     // Update the UI by removing the deleted entry from flowData
     setFlowData((prevFlowData) =>
-    prevFlowData.filter((entry) => entry.ClientInstructionID !== entryId)
+      prevFlowData.filter((entry) => entry.ClientInstructionID !== entryId)
     );
   };
   // console.log("date format", flowData);
-  
-  const handleGoBack = () => {
-    navigate(-1);
-  };
-  
+
+ 
+
   return (
-    <>
    
-      <div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            padding: "11px",
-            marginLeft: "837px",
-            marginBottom: "-100px",
-            color: "blue",
-            textDecoration: "underline",
-            cursor: "pointer",
-          }}
-          onClick={handleGoBack}
-        >
-          <SkipBack
-            style={{ marginRight: "5px" }}
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="Go Back"
-            className="backbutton"
-          />
-          Go to back
-        </div>
-      </div>
-      <div>
+     <div>
         {/* <h3>Instruction Project - ( England )</h3> */}
         <AddAnnuities onAddEntry={handleAddEntry} />
-        
+
         <div className="handle-search">
           <div className="search-icon">
             <Search />
@@ -142,11 +115,12 @@ const AnnuitiesClientInstruction = ({chatId}) => {
                     <Th>Jurisdiction</Th>
                     <Th>Instruction Date</Th>
                     <Th>Annuities DueDate</Th>
+                    <Th>Item Link</Th>
                     <Th>Action</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {flowData.map((item) => (
+                  {flowData.map((item, user) => (
                     <Tr key={item.ClientInstructionID}>
                       <Td>{item.Name}</Td>
                       <Td>{item.Jurisdiction}</Td>
@@ -155,6 +129,25 @@ const AnnuitiesClientInstruction = ({chatId}) => {
                       </Td>
                       <Td>
                         {new Date(item.AnnuitiesDueDate).toLocaleDateString()}
+                      </Td>
+                      <Td>
+                        <div className="link2-container">
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Click to go to the Employee Details"
+                          >
+                           
+                            <Link2
+                              size="22px"
+                              color="#5b5fc7"
+                              onClick={() => {
+                                window.location.href = user.ItemLink;
+                              }}
+                            />
+                          </span>
+                        </div>
+                      
                       </Td>
                       <Td>
                         <Td>
@@ -180,7 +173,6 @@ const AnnuitiesClientInstruction = ({chatId}) => {
               </Table>
             </div>
           )}
-          
         </div>
         {selectedEntry && (
           <EditAnnuities
@@ -190,8 +182,7 @@ const AnnuitiesClientInstruction = ({chatId}) => {
           />
         )}
       </div>
-     
-    </>
+    
   );
 };
 

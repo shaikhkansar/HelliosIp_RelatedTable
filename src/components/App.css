@@ -174,7 +174,8 @@ body {
 
 /* AddAnnuities */
 .table-striped{
-  margin-top:10px;}
+  margin-top:10px;
+}
 
   .addentry{
     margin-top: 10px;
@@ -246,16 +247,20 @@ margin-top: 10px;
   margin-left: 300px;
 }
 
+
+
 @media only screen and (max-width: 600px) {
 
   body {
     overflow-x: show;
     overflow-y: show;
+    margin: 20px!important;
+    
   }
-  .spinner {
-    margin-left: 70px !important;
+  /* .spinner {
+    margin-left: 10px!important;
     margin-top: 220px;
-  }
+  } */
   .form-control {
     display: block;
     font-size: 10px !important;
@@ -502,6 +507,7 @@ element.style {
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   margin-left:305px;
   font-size: 13px!important;
+  margin-top: 25px!important;
 }
 
 .form-control {
@@ -521,18 +527,55 @@ element.style {
 }
 
 .search-icon{
-  margin-top: 470px;
-  margin-left: -440px;
+  position: fixed;
+  left: 200px;
+  /* margin-top: 435px;
+  margin-left: -440px; */
 }
 
 .backbutton{
 margin-left: -400px!important;
-margin-bottom: 24px;
+margin-bottom: 23px;
+
 }
 
 /* ProjectInstruction Css */
 .hding{
-  margin-right: -10px!important;
+  margin-left: 304px!important;
+}
+
+.addentryicn{
+  margin-left: 10px!important;
+  margin-top: -8px!important;
+}
+
+.addentry{
+width: 100px;
+margin-left: -55px;
+}
+
+.labelnm{
+  position: absolute;
+  left: 53px;
+  bottom: 32px;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin-left: -81px;
+  margin-top: 20px;
+}
+.react-datepicker__navigation--previous {
+  left: 108px;
+  margin-top: 1px;
+}
+
+.react-datepicker__navigation-icon--next::before {
+  position: fixed;
+  left: 190px;
+  top: 14px;
 }
 
  }

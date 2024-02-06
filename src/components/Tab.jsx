@@ -4,6 +4,7 @@ import "./App.css";
 import Annuities from "./Anuuities";
 import InstructionProject from "./InstructionProject";
 import ProjectInstruction from "./ProjectInstruction";
+import IframComp from "./IframComp";
 class Tab extends React.Component {
   constructor(props) {
     super(props);
@@ -52,10 +53,11 @@ class Tab extends React.Component {
         {/* <p>{chatId}</p> */}
         {/* {<MeetingSummary chatid={chatId} />} */}
         {/* <Dynamics365Entity/> */}
-        <InstructionProject chatid={chatId} />
+        <InstructionProject chatid={chatId}/>
+        <Annuities chatid={chatId}/>
         {/* <AnuuitiesProjectId chatid={chatId}/> */}
-        <Annuities chatid={chatId} />
         {/* <ProjectInstruction chatid={chatId} /> */}
+<IframComp/>
       </div>
     );
   }

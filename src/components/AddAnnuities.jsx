@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { UserPlus } from "react-feather";
+import { UserPlus,SkipBack } from "react-feather";
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css"
 import  Tabs  from "./Tabs";
+import { useNavigate } from "react-router-dom";
 import {
   Table,
   Thead,
@@ -15,14 +16,18 @@ import {
 } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
+// State for Bootstrap alert
 const AddAnnuities = ({ onAddEntry }) => {
-  const [newEntry, setNewEntry] = useState({
+  
+  const initialEntryState = {
     Name: "",
     Jurisdiction: "",
-    InstructionDate: "",
-    AnnuitiesDueDate: "",
-  });
-// Test 
+    InstructionDate: null,
+    AnnuitiesDueDate: null,
+  };
+  const [newEntry, setNewEntry] = useState({ ...initialEntryState });
+  const [showAlert, setShowAlert] = useState(false); 
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewEntry((prevEntry) => ({
@@ -39,6 +44,11 @@ const AddAnnuities = ({ onAddEntry }) => {
           .padStart(2, "0")}`
       : null;
   };
+
+  const resetForm = () => {
+    setNewEntry({ ...initialEntryState });
+  };
+
 
   const addEntry = async () => {
     const formattedEntry = {
@@ -70,22 +80,63 @@ const AddAnnuities = ({ onAddEntry }) => {
       } else {
         console.error("Failed to add new entry:", response.statusText);
       }
+            // Update the UI by calling the onAddEntry prop
+            onAddEntry(formattedEntry);
+
+            // Show the Bootstrap alert
+            setShowAlert(true);
+      
+            // Reset the form inputs
+            resetForm();
     } catch (error) {
       console.error("Error adding new entry:", error);
     }
+  };
+  const handleGoBack = () => {
+    navigate(-1);
   };
 
   return (
     <div>
        <Tabs />
+       <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            padding: "11px",
+            marginLeft: "837px",
+            marginBottom: "-80px",
+            color: "blue",
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}
+          onClick={handleGoBack}
+        >
+          <SkipBack
+            style={{ marginRight: "5px" }}
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Go Back"
+            className="backbutton"
+          />
+          Go to back
+        </div>
       <h5 style={{marginTop:"40px"}}>Add Client Instruction </h5>
       <Table className="SuperResponsiveTable table-border table-striped addannuities">
+         {/* Bootstrap Alert */}
+      {showAlert && (
+        <div className="alert alert-success" role="alert">
+          Added successfully!
+        </div>
+      )}
         <Tbody>
           <Tr>
-            <Td>
-              <label>
+            <Td className="responsiveTd">
+             
+              <label className="labelnm">
                 Name:
                 </label>
+               
                 <input
                   type="text"
                   name="Name"
@@ -94,7 +145,7 @@ const AddAnnuities = ({ onAddEntry }) => {
                 />
             </Td>
             <Td>
-              <label>
+              <label className="labelnm">
                 Jurisdiction:
                 </label>
                 <input
@@ -105,7 +156,7 @@ const AddAnnuities = ({ onAddEntry }) => {
                 />
             </Td>
             <Td>
-              <label>
+              <label className="labelnm">
                 Instruction Date:
                 </label>
                 <DatePicker
@@ -117,7 +168,7 @@ const AddAnnuities = ({ onAddEntry }) => {
                 />
             </Td>
             <Td>
-              <label>
+              <label className="labelnm">
                 Annuities Due Date:
                 </label>
                 <DatePicker
@@ -137,7 +188,7 @@ const AddAnnuities = ({ onAddEntry }) => {
                 data-bs-placement="top"
                 title="Add Entry"
               >
-                <UserPlus />
+                <UserPlus className="addentryicn"/>
               </button>
             </Td>
           </Tr>

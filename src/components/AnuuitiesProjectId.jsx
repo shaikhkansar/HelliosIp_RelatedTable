@@ -49,31 +49,8 @@ const AnuuitiesProjectId = ({ chatid }) => {
     };
   }, [chatid]);
 
-  const tableStyle = {
-    width: "50%",
-    border: "1px solid lightgray",
-    borderRadius: "5px",
-    marginLeft: "450px",
-  };
-
-  const thStyle = {
-    background: "lightgray",
-    padding: "8px",
-    borderBottom: "1px solid lightgray",
-  };
-
-  const thTdStyle = {
-    padding: "8px",
-    border: "1px solid lightgray",
-  };
-
-  const cellStyle = {
-    padding: "8px",
-    borderBottom: "1px solid lightgray",
-  };
-
   return (
-    <div>
+    <div className="hding">
       {data && data.length > 0 ? (
         <div>
           {data && data.length > 0 ? (
@@ -89,7 +66,7 @@ const AnuuitiesProjectId = ({ chatid }) => {
               )}
             </div>
           ) : (
-            <div>No data available</div>
+            <div></div>
           )}
         </div>
       ) : (

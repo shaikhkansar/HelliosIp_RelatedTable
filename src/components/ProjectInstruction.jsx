@@ -50,11 +50,11 @@ const ProjectInstruction = ({ chatid }) => {
   }, [chatid]);
 
    return (
-    <div>
+    <div className="hding">
       {data && data.length > 0 ? (
-        <div className="hding">
+        <div>
           {data && data.length > 0 ? (
-            <div >
+            <div>
               {Object.keys(data[0]).map(
                 (property, index) =>
                   typeof data[0][property] !== "object" &&
@@ -66,7 +66,7 @@ const ProjectInstruction = ({ chatid }) => {
               )}
             </div>
           ) : (
-            <div>No data available</div>
+            <div></div>
           )}
         </div>
       ) : (
