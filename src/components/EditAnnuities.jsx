@@ -42,6 +42,7 @@ const EditAnnuities = ({ entry, onClose, onEdit }) => {
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
         const result = await response.json();
+        
         setResponse(JSON.stringify(result, null, 2));
 
         const updatedEntry = await response.json();
@@ -62,61 +63,92 @@ const EditAnnuities = ({ entry, onClose, onEdit }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '10px' }}>
       <div>
-        <input
-          type="text"
-          name="Name"
-          value={formData.Name}
-          onChange={handleInputChange}
-        />
-      </div>
+      <Table>
+  <Tbody>
+    <Tr>
+    <Td >
+  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+    <label className="labelnm" style={{ marginRight: '10px', minWidth: '100px' }}>
+      Name:
+    </label>
+    <input
+      className="form-control"
+      type="text"
+      name="Name"
+      value={formData.Name}
+      onChange={handleInputChange}
+      style={{ width: '100%' }}
+    />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+    <label className="labelnm" style={{ marginRight: '10px', minWidth: '100px' }}>
+      Jurisdiction:
+    </label>
+    <input
+      className="form-control"
+      type="text"
+      name="Jurisdiction"
+      value={formData.Jurisdiction}
+      onChange={handleInputChange}
+      style={{ width: '100%' }}
+    />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+    <label className="labelnm" style={{ marginRight: '10px', minWidth: '100px' }}>
+      InstructionDate:
+    </label>
+    <input
+      className="form-control"
+      type="date"
+      name="InstructionDate"
+      value={formData.InstructionDate}
+      onChange={handleInputChange}
+      cursor="pointer"
+      style={{ width: '100%' }}
+    />
+  </div>
+  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+    <label className="labelnm" style={{ marginRight: '10px', minWidth: '100px' }}>
+      AnnuitiesDueDate:
+    </label>
+    <input
+      className="form-control"
+      type="date"
+      name="AnnuitiesDueDate"
+      value={formData.AnnuitiesDueDate}
+      onChange={handleInputChange}
+      style={{ width: '100%' }}
+    />
+  </div>
+  <div>
+    <Save
+      onClick={handleEditAnnuities}
+      className=""
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Save"
+      color="#5b5fc7"
+      style={{ cursor: "pointer", marginRight: '10px' }}
+    />
+    <XSquare
+      color="red"
+      onClick={onClose}
+      className=""
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Cancel"
+      style={{ cursor: "pointer", marginLeft: "10px" }}
+    />
+  </div>
+</Td>
 
-      <div>
-        <input
-          type="text"
-          name="Jurisdiction"
-          value={formData.Jurisdiction}
-          onChange={handleInputChange}
-        />
-      </div>
+    </Tr>
+  </Tbody>
+</Table>
 
-      <div style={{ marginBottom: "10px" }}>
-        <input
-          type="date"
-          name="InstructionDate"
-          value={formData.InstructionDate}
-          onChange={handleInputChange}
-        />
-      </div>
-
-      <div style={{ marginBottom: "10px" }}>
-        <input
-          type="date"
-          name="AnnuitiesDueDate"
-          value={formData.AnnuitiesDueDate}
-          onChange={handleInputChange}
-        />
-        
-      </div>
-      <div>
-        <Save
-          onClick={handleEditAnnuities}
-          className=""
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          title="Save"
-          color="#5b5fc7"
-          style={{ cursor: "pointer",marginRight: '10px' }}
-        />
-        <XSquare
-          color="red"
-          onClick={onClose}
-          className=""
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          title="Cancel"
-          style={{ cursor: "pointer", marginLeft:"10px" }}
-        />
-      </div>
+      <pre>{response}</pre>
+    </div>
+      
         <pre>{response}</pre>
     </div>
   );

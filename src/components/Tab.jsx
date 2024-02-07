@@ -53,11 +53,11 @@ class Tab extends React.Component {
         {/* <p>{chatId}</p> */}
         {/* {<MeetingSummary chatid={chatId} />} */}
         {/* <Dynamics365Entity/> */}
-        <InstructionProject chatid={chatId}/>
-        <Annuities chatid={chatId}/>
+        <InstructionProject chatid={chatId} />
+        <Annuities chatid={chatId} />
         {/* <AnuuitiesProjectId chatid={chatId}/> */}
         {/* <ProjectInstruction chatid={chatId} /> */}
-<IframComp/>
+        <IframComp />
       </div>
     );
   }

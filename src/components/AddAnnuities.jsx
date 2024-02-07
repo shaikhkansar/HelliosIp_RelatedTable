@@ -133,50 +133,61 @@ const AddAnnuities = ({ onAddEntry }) => {
           <Tr>
             <Td className="responsiveTd">
              
-              <label className="labelnm">
-                Name:
-                </label>
+             
                
                 <input
+                className="form-control inpts"
                   type="text"
                   name="Name"
                   value={newEntry.Name}
                   onChange={handleInputChange}
+                  placeholder="Type Name here..."
                 />
             </Td>
             <Td>
-              <label className="labelnm">
+              {/* <label className="labelnm">
                 Jurisdiction:
-                </label>
+                </label> */}
                 <input
+                className="form-control inpts"
                   type="text"
                   name="Jurisdiction"
                   value={newEntry.Jurisdiction}
                   onChange={handleInputChange}
+                  placeholder="Type Jurisdiction here..."
                 />
             </Td>
             <Td>
-              <label className="labelnm">
+              {/* <label className="labelnm">
                 Instruction Date:
-                </label>
+                </label> */}
+                
                 <DatePicker
-                  selected={newEntry.InstructionDate}
-                  onChange={(date) =>
-                    setNewEntry({ ...newEntry, InstructionDate: date })
-                  }
-                  dateFormat="yyyy-MM-dd"
+                placeholder="Select Date"
+                className="form-control inpts"
+                selected={newEntry.InstructionDate}
+                onChange={(date) =>
+                  setNewEntry({ ...newEntry, InstructionDate: date })
+                }
+                showIcon
+                  dateFormat="yyyy / MM / dd"
+                  placeholderText="Select Instruction Date"
                 />
+               
             </Td>
             <Td>
-              <label className="labelnm">
+              {/* <label className="labelnm">
                 Annuities Due Date:
-                </label>
+                </label> */}
                 <DatePicker
+                showIcon
+                className="form-control inpts"
                   selected={newEntry.AnnuitiesDueDate}
                   onChange={(date) =>
                     setNewEntry({ ...newEntry, AnnuitiesDueDate: date })
                   }
-                  dateFormat="yyyy-MM-dd"
+                  dateFormat="yyyy / MM / dd"
+                  placeholderText="Select Annuities Due Date"
                 />
             </Td>
             <Td>

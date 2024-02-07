@@ -247,6 +247,25 @@ margin-top: 10px;
   margin-left: 300px;
 }
 
+.react-datepicker__calendar-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  margin-left: 188px;
+  margin-top: 5px;
+}
+
+.inpts{
+  width: 218px;
+}
+
+
+/* date inputs padding */
+.react-datepicker__view-calendar-icon input {
+  padding: 6px 1px 6px 8px;
+}
+
+
 
 
 @media only screen and (max-width: 600px) {
