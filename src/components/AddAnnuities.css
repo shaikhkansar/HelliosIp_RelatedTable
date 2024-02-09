@@ -1,0 +1,147 @@
+/* .main-container {
+  margin-left: 350px;
+  margin-top: 20px;
+}
+
+.modal-dialog {
+  margin-left: 500px;
+  margin-top: 10px;
+}
+
+.row {
+  margin-left: 405px;
+  margin-right: -385px;
+}
+
+.btn {
+  background-color: #5b5fc7 !important;
+  transition: background-color 0.3s ease; 
+}
+.btn1 {
+  background-color: #5b5fc7 !important;
+  transition: background-color 0.3s ease; 
+}
+
+.text-success {
+  margin-left: 410px;
+}
+
+.successpopup {
+  width: 58%;
+  margin-left: 350px !important;
+} */
+
+.responsiveTd{
+  width: 210px;
+}
+
+.table-container {
+  width: 850px;
+  margin: 15px auto;
+  background-color: white;
+  border-radius: 5px;
+  height: 100px;
+}
+
+@media only screen and (max-width: 600px) {
+  
+
+  /* AddAnnuities Responsive CSS property */
+/* .addannuities{
+  margin-left: 50px;
+  width: 10%!important;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-left: -81px;
+} */
+
+.hdng{
+  font-weight: bold!important;
+  margin-left: -100px;
+  font-size: 13px!important;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-left:300px;
+  font-size: 13px!important;
+  margin-top: 47px!important;
+}
+.backbutton{
+  margin-left: -380px!important;
+  margin-bottom: 2px;
+  
+  }
+  
+  /* ProjectInstruction Css */
+.hding{
+  margin-left: 305px!important;
+}
+
+
+.addannuities{
+  margin-left: 386px;
+  width: 255px;
+  margin-top: 30px;
+}
+
+/* .inpts{
+  width: 190px!important;
+  margin-left: 10px;
+} */
+
+.responsiveTd{
+  width: 220px!important;
+  margin-left: -120px!important;
+  margin-top: 10px;
+}
+
+.react-datepicker {
+  top: 20;
+  left: -60px;
+}
+
+.react-datepicker__navigation--previous {
+  
+  left: 108px;
+  margin-top: 1px;
+}
+
+.react-datepicker__navigation-icon--next::before {
+  position: fixed;
+  left: 130px;
+  top: 14px;
+}
+
+.addentryicn{
+  margin-left: 10px!important;
+  margin-top: -5px!important;
+  
+}
+
+.addentry{
+width: 150px;
+margin-left: -85px;
+background-color: #5b5fc7;
+
+}
+
+.addentry:hover{
+  background-color: #7c7ebb;
+}
+
+.handle-search{
+  margin-left: -16px;
+  width: 102%
+}
+
+
+
+
+
+}
+
+

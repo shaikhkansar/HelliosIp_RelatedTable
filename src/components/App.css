@@ -39,7 +39,7 @@ body {
 
 .search-icon {
   position: absolute;
-  left: 680px; 
+  left: 970px; 
   padding: 8px; 
   border-radius: 50%;
   color: lightgray;
@@ -54,6 +54,7 @@ body {
 .handle-search {
   display: flex;
   align-items: center;
+  margin-top: 20px;
 }
 
 .form-control {
@@ -64,8 +65,8 @@ body {
 }
 
 .results-container {
-  width: 850px;
-  margin-left: -130px;
+  width: 950px;
+  margin-left: -0px;
   max-height: 200px;
   overflow-y: auto;
   margin-top: 10px;
@@ -133,6 +134,11 @@ body {
 
  /* Annuities CSS */
 
+ .hdng{
+  margin-left: 100px;
+
+ }
+
  .thTdStyle{
   padding: 8px;
   border: 1px solid lightgray;
@@ -172,45 +178,7 @@ body {
 }
 
 
-/* AddAnnuities */
-.table-striped{
-  margin-top:10px;
-}
 
-  .addentry{
-    margin-top: 10px;
-  }
-
-  .backbutton{
-    margin-left: -20px;
-}
-
-
-/* Light gray border for the table */
-.SuperResponsiveTable {
-  border-collapse: collapse;
-  border: 1px solid #dcdcdc;
-}
-
-/* Light gray background color for the table rows */
-.SuperResponsiveTable tbody tr:nth-of-type(odd) {
-  background-color: #f8f9fa;
-}
-
-/* Style for table header cells */
-.SuperResponsiveTable th {
-  background-color: #f8f9fa; /* Light gray background for header cells */
-}
-
-/* Style for table body cells */
-.SuperResponsiveTable td {
-  border: 1px solid #dcdcdc; /* Light gray border for cells */
-}
-
-/* Add some padding to the cells for better appearance */
-.SuperResponsiveTable th, .SuperResponsiveTable td {
-  padding: 8px;
-}
 
 /* instructionProject Css */
 
@@ -239,25 +207,8 @@ body {
   border-bottom: 1px solid lightgray;
 }
 
-.handle-search{
-margin-top: 10px;
-}
 
-.search-icon{
-  margin-left: 300px;
-}
 
-.react-datepicker__calendar-icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.125em;
-  margin-left: 188px;
-  margin-top: 5px;
-}
-
-.inpts{
-  width: 218px;
-}
 
 
 /* date inputs padding */
@@ -265,10 +216,33 @@ margin-top: 10px;
   padding: 6px 1px 6px 8px;
 }
 
+/* model */
 
 
+/* Annuities CSS */
+
+.thTdStyle{
+  padding: 8px;
+  border: 1px solid lightgray;
+  background-color:lightgray!important;
+  text-align: center;
+ }
+ .thTdStyle2{
+  padding: 8px;
+  border: 1px solid lightgray;
+  text-align: center;
+ }
 
 @media only screen and (max-width: 600px) {
+
+
+  .fk0ktpv {
+    padding-left: 0rem;
+}
+
+.f1j5qnyn {
+  padding-top: 0rem;
+}
 
   body {
     overflow-x: show;
@@ -276,11 +250,48 @@ margin-top: 10px;
     margin: 20px!important;
     
   }
+
+  /* Annuities Responsive CSS Property */
+
+.table-striped{
+  margin-left:-103px;
+  width: 52%;
+  font-size: 13px;
+  margin-top: 10px;
+}
+.h4, h4 {
+  font-size: calc(1.275rem + .3vw);
+  margin-left: -103px;
+  font-size: 13px;
+}
+
+/* instructionProject Responsive CSS Property  */
+
+.tablestyle{
+  background-color: white;
+  width: 26%;
+  margin-left: 345px;
+  font-size: 12px;
+}
+
+.thstyle{
+
+  background-color: lightgray;
+  padding: 8px;
+}
+
+.thTdstyle{
+  padding: 8px;
+}
+
+
+
+
   /* .spinner {
     margin-left: 10px!important;
     margin-top: 220px;
   } */
-  .form-control {
+  /* .form-control {
     display: block;
     font-size: 10px !important;
     font-weight: 400;
@@ -303,11 +314,11 @@ margin-top: 10px;
   .search-control {
     width: 49% !important;
     margin-left: -9px;
-  }
-  .search-icon {
+  } */
+  /* .search-icon {
     position: absolute;
     top: 7%;
-    right: 43%; /* Adjust the positioning as needed */
+    right: 43%; 
     transform: translateY(-50%);
     color: lightgray;
   }
@@ -319,14 +330,14 @@ margin-top: 10px;
     margin-top: 10px !important;
     width: 250px;
     height: 31px;
-  }
+  } */
 
   /* img,
   svg {
     vertical-align: middle;
     margin-top: -3px;
   } */
-  .table {
+  /* .table {
     width: 238px !important;
     font-size: 11px;
   }
@@ -342,29 +353,29 @@ margin-top: 10px;
   }
   .user-td {
     font-size: 12px;
-  }
+  } */
   /* .edit-icon {
     margin-right: 9px !important;
   } */
-  .successpopup {
+  /* .successpopup {
     font-size: 11px;
     width: 223px !important;
     margin-left: 10px;
-  }
+  } */
 
-  .table-container {
-    /* Add your styles for small screens here */
+  /* Add your styles for small screens here */
+  /* .table-container {
     overflow-x: auto;
     margin-left: 92px;
-  }
+  } */
 
-  .table-container th,
+  /* Add your styles for table headers and cells on small screens here */
+  /* .table-container th,
   .table-container td {
-    /* Add your styles for table headers and cells on small screens here */
     white-space: nowrap;
     font-size: 12px;
     padding: 4px;
-  }
+  } */
 
   /* link */
   /* img,
@@ -381,7 +392,7 @@ margin-top: 10px;
     height: 15px;
   } */
 
-  .delete-icon {
+  /* .delete-icon {
     margin-top: 2px;
     margin-left: -29px;
     height: 15px;
@@ -410,76 +421,32 @@ margin-top: 10px;
     outline: -1;
     margin-left: -495px;
     font-size: 10px;
-  }
+  } */
   /* .search-icon{
    margin-left: -16rem;
    margin-top: 1px;
   } */
-  .invalid-feedback {
+  /* .invalid-feedback {
     font-size: 11px;
   }
 
   .table>:not(caption)>*>* {
     font-size: 13px;
-   }
+   } */
   /* .table-striped{
     margin-left: -2%;
   } */
 
-  .heading{
+  /* .heading{
     font-size: 12px!important;
-  }
+  } */
 
-/* Annuities REsponsive CSS Property */
 
-.table-striped{
-  margin-left:-103px;
-  width: 52%;
-  font-size: 13px;
-  margin-top: 10px;
-}
-.h4, h4 {
-  font-size: calc(1.275rem + .3vw);
-  margin-left: -103px;
-  font-size: 13px;
-}
-
-/* instructionProject Css */
-
-.tablestyle{
-  background-color: white;
-  width: 26%;
-  margin-left: 345px;
-  font-size: 12px;
-}
-
-.thstyle{
-
-  background-color: lightgray;
-  padding: 8px;
-}
-
-.thTdstyle{
-  padding: 8px;
-}
-
-/* AddAnnuities Responsive CSS property */
-.addannuities{
-  margin-left: 301px;
-  width: 30%;
-}
-
-button, input, optgroup, select, textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    margin-left: -81px;
-}
 
 
 /* AnnuitiesClientInx rcss */
 .annuities-client-inx{
-  margin-left:301px;
+  margin-left:290px;
   width: calc(30% - 1px)!important;
 }
 
@@ -494,40 +461,23 @@ img, svg {
   
 }
 
-.backbutton{
+
+/* .backbutton{
   margin-left: px!important;
   margin-top: 30px;
   font-size: 12px!important;
-}
-element.style {
-  display: flex;
-  align-items: center;
-  padding: 11px;
-  margin-left: 837px;
-  margin-bottom: -100px;
-  color: blue;
-  font-size: 12px;
-}
-
+} */
 .btn-success{
   margin-left: -135px;
 }
 
 .add-button{
   margin-left: 50px;
+  
 }
 
-.hdng{
-  font-weight: bold;
-  margin-left: -105px;
-  font-size: 13px!important;
-}
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  margin-left:305px;
-  font-size: 13px!important;
-  margin-top: 25px!important;
-}
+
 
 .form-control {
   display: block;
@@ -548,29 +498,10 @@ element.style {
 .search-icon{
   position: fixed;
   left: 200px;
+  
   /* margin-top: 435px;
   margin-left: -440px; */
-}
-
-.backbutton{
-margin-left: -400px!important;
-margin-bottom: 23px;
-
-}
-
-/* ProjectInstruction Css */
-.hding{
-  margin-left: 304px!important;
-}
-
-.addentryicn{
-  margin-left: 10px!important;
-  margin-top: -8px!important;
-}
-
-.addentry{
-width: 100px;
-margin-left: -55px;
+  
 }
 
 .labelnm{
@@ -586,15 +517,40 @@ button, input, optgroup, select, textarea {
   margin-left: -81px;
   margin-top: 20px;
 }
-.react-datepicker__navigation--previous {
-  left: 108px;
-  margin-top: 1px;
+
+
+.modal {
+  position: fixed;
+  top: -119px;
+  left: 50px;
+
 }
 
-.react-datepicker__navigation-icon--next::before {
-  position: fixed;
-  left: 190px;
-  top: 14px;
+.labelinp{
+margin-top: 10px;
+width: 10px!important;
+margin-left: 10px!important;
+}
+
+.editInput{
+  width: 250px!important ;
+  margin-left: -70px!important;
+}
+
+.modal-content {
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 0.3rem;
+  outline: 0;
+  margin-left: -50px;
+  width: 300px;
+}
+
+.modelshow{
+  margin-top: 140px!important;
+  margin-left: -10px!important;
 }
 
  }

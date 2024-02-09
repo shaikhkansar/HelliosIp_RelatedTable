@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Save, XSquare } from "react-feather";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+import "./EditAnnuities.css";
 
 const EditAnnuities = ({ entry, onClose, onEdit }) => {
   const [formData, setFormData] = useState({
@@ -42,7 +43,7 @@ const EditAnnuities = ({ entry, onClose, onEdit }) => {
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
         const result = await response.json();
-        
+
         setResponse(JSON.stringify(result, null, 2));
 
         const updatedEntry = await response.json();
@@ -61,95 +62,67 @@ const EditAnnuities = ({ entry, onClose, onEdit }) => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '10px' }}>
-      <div>
+    <div className="container">
       <Table>
-  <Tbody>
-    <Tr>
-    <Td >
-  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-    <label className="labelnm" style={{ marginRight: '10px', minWidth: '100px' }}>
-      Name:
-    </label>
-    <input
-      className="form-control"
-      type="text"
-      name="Name"
-      value={formData.Name}
-      onChange={handleInputChange}
-      style={{ width: '100%' }}
-    />
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-    <label className="labelnm" style={{ marginRight: '10px', minWidth: '100px' }}>
-      Jurisdiction:
-    </label>
-    <input
-      className="form-control"
-      type="text"
-      name="Jurisdiction"
-      value={formData.Jurisdiction}
-      onChange={handleInputChange}
-      style={{ width: '100%' }}
-    />
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-    <label className="labelnm" style={{ marginRight: '10px', minWidth: '100px' }}>
-      InstructionDate:
-    </label>
-    <input
-      className="form-control"
-      type="date"
-      name="InstructionDate"
-      value={formData.InstructionDate}
-      onChange={handleInputChange}
-      cursor="pointer"
-      style={{ width: '100%' }}
-    />
-  </div>
-  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-    <label className="labelnm" style={{ marginRight: '10px', minWidth: '100px' }}>
-      AnnuitiesDueDate:
-    </label>
-    <input
-      className="form-control"
-      type="date"
-      name="AnnuitiesDueDate"
-      value={formData.AnnuitiesDueDate}
-      onChange={handleInputChange}
-      style={{ width: '100%' }}
-    />
-  </div>
-  <div>
-    <Save
-      onClick={handleEditAnnuities}
-      className=""
-      data-bs-toggle="tooltip"
-      data-bs-placement="top"
-      title="Save"
-      color="#5b5fc7"
-      style={{ cursor: "pointer", marginRight: '10px' }}
-    />
-    <XSquare
-      color="red"
-      onClick={onClose}
-      className=""
-      data-bs-toggle="tooltip"
-      data-bs-placement="top"
-      title="Cancel"
-      style={{ cursor: "pointer", marginLeft: "10px" }}
-    />
-  </div>
-</Td>
-
-    </Tr>
-  </Tbody>
-</Table>
-
+        <Tbody>
+          <Tr>
+            <Td className="editInput">
+              <div className="inputWrapper">
+                <label className="labelinp">Name:</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="Name"
+                  value={formData.Name}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="inputWrapper">
+                <label className="labelinp">Jurisdiction:</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="Jurisdiction"
+                  value={formData.Jurisdiction}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="inputWrapper">
+                <label className="labelinp">InstructionDate:</label>
+                <input
+                  className="form-control"
+                  type="date"
+                  name="InstructionDate"
+                  value={formData.InstructionDate}
+                  onChange={handleInputChange}
+                  cursor="pointer"
+                />
+              </div>
+              <div className="inputWrapper">
+                <label className="labelinp">AnnuitiesDueDate:</label>
+                <input
+                  className="form-control"
+                  type="date"
+                  name="AnnuitiesDueDate"
+                  value={formData.AnnuitiesDueDate}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="buttonWrapper">
+                <button className="saveButton" onClick={handleEditAnnuities}>
+                  <Save className="icon" />
+                  Save
+                </button>
+                <button className="cancelButton" onClick={onClose}>
+                  <XSquare className="icon" />
+                  Cancel
+                </button>
+              </div>
+            </Td>
+          </Tr>
+        </Tbody>
+      </Table>
       <pre>{response}</pre>
-    </div>
-      
-        <pre>{response}</pre>
     </div>
   );
 };

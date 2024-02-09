@@ -13,6 +13,7 @@ const AnnuitiesClientInstruction = () => {
   const [flowData, setFlowData] = useState(null);
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleAddEntry = (newEntry) => {
     console.log("New entry received:", newEntry);
@@ -85,25 +86,30 @@ const AnnuitiesClientInstruction = () => {
     );
   };
 
+// Filter flowData based on search query
+const filteredFlowData = flowData && flowData.filter((item) =>
+  item.Name.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
   return (
     <div>
       <AddAnnuities onAddEntry={handleAddEntry} />
 
       <div className="handle-search">
         <div className="search-icon">
-          <Search />
+          {/* <Search /> */}
         </div>
         <input
           type="text"
           className="form-control search-control"
           placeholder="Search"
-          // value={searchQuery}
-          // onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
-      <div>
-        {flowData && (
+      <div style={{marginTop:"20px"}}>
+      {filteredFlowData &&(
           <div>
             <Table className="table-border table-striped  table table-hover annuities-client-inx">
               <Thead>
@@ -117,43 +123,42 @@ const AnnuitiesClientInstruction = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {flowData &&
-                  flowData.map((item, index) => (
-                    <Tr key={index}>
-                      <Td>{item.Name}</Td>
-                      <Td>{item.Jurisdiction}</Td>
-                      <Td>
-                        {new Date(item.InstructionDate).toLocaleDateString()}
-                      </Td>
-                      <Td>
-                        {new Date(item.AnnuitiesDueDate).toLocaleDateString()}
-                      </Td>
-                      <Td>
-                        <Link2
-                          size="22px"
+              {filteredFlowData.map((item, index) => (
+                  <Tr key={index}>
+                    <Td>{item.Name}</Td>
+                    <Td>{item.Jurisdiction}</Td>
+                    <Td>
+                      {new Date(item.InstructionDate).toLocaleDateString()}
+                    </Td>
+                    <Td>
+                      {new Date(item.AnnuitiesDueDate).toLocaleDateString()}
+                    </Td>
+                    <Td>
+                      <Link2
+                        size="22px"
+                        color="#5b5fc7"
+                        cursor="pointer"
+                        onClick={() => {
+                          window.location.href = item.ItemLink;
+                        }}
+                      />
+                    </Td>
+                    <Td>
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <Edit
                           color="#5b5fc7"
-                          cursor="pointer"
-                          onClick={() => {
-                            window.location.href = item.ItemLink;
-                          }}
+                          onClick={() => handleEditEntry(item)} // Open edit modal
+                          style={{ cursor: "pointer", marginRight: "18px" }}
                         />
-                      </Td>
-                      <Td>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <Edit
-                            color="#5b5fc7"
-                            onClick={() => handleEditEntry(item)} // Open edit modal
-                            style={{ cursor: "pointer", marginRight: "18px" }}
-                          />
-                          <DeleteAnnuities
-                            key={item.ClientInstructionID}
-                            entryId={item.ClientInstructionID}
-                            onDeleteEntry={handleDeleteEntry}
-                          />
-                        </div>
-                      </Td>
-                    </Tr>
-                  ))}
+                        <DeleteAnnuities
+                          key={item.ClientInstructionID}
+                          entryId={item.ClientInstructionID}
+                          onDeleteEntry={handleDeleteEntry}
+                        />
+                      </div>
+                    </Td>
+                  </Tr>
+                ))}
               </Tbody>
             </Table>
             {/* Edit Modal */}

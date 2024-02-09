@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { UserPlus } from "react-feather";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "./AddEmployee.css";
+// import "./AddEmployee.css";
 
 const AddEmployee = ({ deleteSuccess, saveSuccess, updateUsers, users }) => {
   const [formData, setFormData] = useState({

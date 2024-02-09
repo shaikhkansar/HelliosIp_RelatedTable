@@ -4,7 +4,7 @@ import "./App.css";
 import Annuities from "./Anuuities";
 import InstructionProject from "./InstructionProject";
 import ProjectInstruction from "./ProjectInstruction";
-import IframComp from "./IframComp";
+// import IframComp from "./IframComp";
 class Tab extends React.Component {
   constructor(props) {
     super(props);
@@ -57,7 +57,7 @@ class Tab extends React.Component {
         <Annuities chatid={chatId} />
         {/* <AnuuitiesProjectId chatid={chatId}/> */}
         {/* <ProjectInstruction chatid={chatId} /> */}
-        <IframComp />
+        {/* <IframComp /> */}
       </div>
     );
   }

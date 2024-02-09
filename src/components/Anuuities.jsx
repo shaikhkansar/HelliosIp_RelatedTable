@@ -1,3 +1,5 @@
+// 2nd Table  heading (Annuities for the above Instruction Type)
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
@@ -105,7 +107,7 @@ const Anuuities = ({ chatid }) => {
               </Td>
             </Tr>
             {Array.isArray(instructionType) ? (
-              <Table className="table-striped table table-hover">
+              <Table className=" SuperResponsiveTable table-striped table table-hover">
                 <Thead>
                   <Tr>
                     {Object.keys(instructionType[0]).map((property) => (
