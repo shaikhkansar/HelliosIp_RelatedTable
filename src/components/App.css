@@ -519,13 +519,6 @@ button, input, optgroup, select, textarea {
 }
 
 
-.modal {
-  position: fixed;
-  top: -119px;
-  left: 50px;
-
-}
-
 .labelinp{
 margin-top: 10px;
 width: 10px!important;
@@ -551,6 +544,33 @@ margin-left: 10px!important;
 .modelshow{
   margin-top: 140px!important;
   margin-left: -10px!important;
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+  width: 327px;
+}
+.editInput {
+  /* width: 0%!important; */
+  margin-left: -250px;
+}
+
+.f1j5qnyn {
+  /* padding-top: 2rem; */
+}
+
+.fk0ktpv {
+  /* padding-left: 2rem; */
+}
+
+.modal {
+  position: fixed;
+  top: -6px;
+  left: 21px;
+}
+
+.modal-header {
+    margin-left: -246px;
 }
 
  }

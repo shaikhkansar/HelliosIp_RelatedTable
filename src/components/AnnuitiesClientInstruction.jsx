@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddAnnuities from "./AddAnnuities";
-import { Edit, SkipBack, Search, Link2 } from "react-feather";
+import { Edit, SkipBack, Search, Link2, RefreshCcw } from "react-feather"; // Import RefreshCcw icon
 import DeleteAnnuities from "./DeleteAnnuities";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
@@ -86,10 +86,15 @@ const AnnuitiesClientInstruction = () => {
     );
   };
 
-// Filter flowData based on search query
-const filteredFlowData = flowData && flowData.filter((item) =>
-  item.Name.toLowerCase().includes(searchQuery.toLowerCase())
-);
+  // Handle refreshing data
+  const handleRefresh = () => {
+    fetchData();
+  };
+
+  // Filter flowData based on search query
+  const filteredFlowData = flowData && flowData.filter((item) =>
+    item.Name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div>
@@ -109,6 +114,9 @@ const filteredFlowData = flowData && flowData.filter((item) =>
       </div>
 
       <div style={{marginTop:"20px"}}>
+      <button onClick={handleRefresh} className="refresh-button saveButton">
+        <RefreshCcw />
+      </button>
       {filteredFlowData &&(
           <div>
             <Table className="table-border table-striped  table table-hover annuities-client-inx">
@@ -161,21 +169,21 @@ const filteredFlowData = flowData && flowData.filter((item) =>
                 ))}
               </Tbody>
             </Table>
-            {/* Edit Modal */}
-            <Modal show={showEditModal} onHide={handleCloseEditModal}>
-              <Modal.Header closeButton>
-                <Modal.Title>Edit Entry</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <EditAnnuities
-                  entry={selectedEntry}
-                  onClose={handleCloseEditModal}
-                  onEdit={handleEditSuccess}
-                />
-              </Modal.Body>
-            </Modal>
           </div>
         )}
+            {/* Edit Modal */}
+            <Modal show={showEditModal} onHide={handleCloseEditModal} className="modelpopup" dialogClassName="modal-dialog modal-dialog-centered modal-lg">
+  <Modal.Header closeButton>
+    <Modal.Title>Edit Entry</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <EditAnnuities
+      entry={selectedEntry}
+      onClose={handleCloseEditModal}
+      onEdit={handleEditSuccess}
+    />
+  </Modal.Body>
+</Modal>
       </div>
       {/* {selectedEntry && (
         <EditAnnuities

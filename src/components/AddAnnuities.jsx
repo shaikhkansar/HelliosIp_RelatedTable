@@ -102,14 +102,15 @@ const AddAnnuities = ({ onAddEntry }) => {
         }}
         onClick={handleGoBack}
       >
+        <button className="saveButton" >
         <SkipBack
-          style={{ marginRight: "5px", marginTop: "4px" }}
+          // style={{ marginRight: "15px", marginTop: "1px", textDecoration:"none" }}
           data-bs-toggle="tooltip"
           data-bs-placement="top"
-          title="Go Back"
           className="backbutton"
         />
         Go to back
+        </button>
       </div>
       <h5 style={{ marginTop: "40px" }}>Add Client Instruction </h5>
       <Table className="SuperResponsiveTable table-border table-striped">

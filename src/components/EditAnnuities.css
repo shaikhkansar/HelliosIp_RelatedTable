@@ -75,13 +75,27 @@
 
 }
 
+.modelpopup{
+  width: 500px;
+  margin-left: 300px;
+}
+
 .icon {
   margin-right: 5px;
 }
 
 @media (max-width: 768px) {
     .editInput {
-     width: 100%!important;
-     margin-left: -250px;
+     width: 50%!important;
+     margin-left: -300px;
     }
+
+  .inputWrapper{
+      margin-left: 160px;
+    }
+
+    .modelpopup {
+      width: 400px;
+      margin-left: 100px;
+  }
 }
