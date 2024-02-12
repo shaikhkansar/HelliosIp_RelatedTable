@@ -233,6 +233,8 @@ body {
   text-align: center;
  }
 
+
+
 @media only screen and (max-width: 600px) {
 
 
@@ -565,12 +567,22 @@ margin-left: 10px!important;
 
 .modal {
   position: fixed;
-  top: -6px;
-  left: 21px;
+  top: -116px;
+  left: -50px;
+  width: 100%;
 }
 
 .modal-header {
     margin-left: -246px;
 }
+
+.refresh-button{
+  position: relative;
+  top:10px;
+  left:580px
+
+ }
+
+
 
  }
