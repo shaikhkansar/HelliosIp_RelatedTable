@@ -127,9 +127,9 @@ const AnnuitiesClientInstruction = () => {
                   <Th>Annuities DueDate</Th>
                   <Th>Item Link</Th>
                   <Th>Action</Th>
-                  <Th>Annuities Id <button onClick={handleRefresh} className="refresh-button saveButton">
-        <RefreshCcw />
-      </button></Th>
+                  <Th>Annuities Id 
+        <RefreshCcw onClick={handleRefresh} className="refresh-button saveButton" />
+     </Th>
                 </Tr>
               </Thead>
               <Tbody>
