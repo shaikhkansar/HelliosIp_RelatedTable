@@ -113,9 +113,9 @@ body {
   width: 97px;
 } */
 
-.delete-icon {
+/* .delete-icon {
   margin-top: 2px;
-}
+} */
 
 .spinner {
   margin-top: 260px;
@@ -488,7 +488,7 @@ img, svg {
   line-height: 2;
   color: #212529;
   background-color: #fff;
-  background-clip: padding-box;
+  /* background-clip: padding-box; */
   border: 1px solid #ced4da;
   appearance: none;
   border-radius: 0.25rem;
@@ -535,7 +535,7 @@ margin-left: 10px!important;
 .modal-content {
   pointer-events: auto;
   background-color: #fff;
-  background-clip: padding-box;
+  /* background-clip: padding-box; */
   border: 1px solid rgba(0,0,0,.2);
   border-radius: 0.3rem;
   outline: 0;

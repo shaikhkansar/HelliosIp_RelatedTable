@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddAnnuities from "./AddAnnuities";
 import { Edit, SkipBack, Search, Link2, RefreshCcw } from "react-feather"; // Import RefreshCcw icon
-import DeleteAnnuities from "./DeleteAnnuities";
+// import DeleteAnnuities from "./DeleteAnnuities";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./App.css";
@@ -26,8 +26,9 @@ const AnnuitiesClientInstruction = () => {
 
   // Fetch data function
   const fetchData = async () => {
+    
     const apiUrl =
-      "https://prod-31.centralindia.logic.azure.com:443/workflows/b099fe3a64ed4c2b980dba7badc2c13b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=KTxIadchgbpo8oEKAzIe48KGgEmEpW4NRTXAOnFd-g0";
+      "https://prod-02.centralindia.logic.azure.com:443/workflows/1cfbd3f3025940db835c4a5c4a605851/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5rDfrxdePF7I7iRML_s-zv4MAA-Axl--BcobJtqjUvQ";
 
     try {
       const response = await fetch(apiUrl, {
@@ -80,11 +81,11 @@ const AnnuitiesClientInstruction = () => {
   };
 
   // Handle delete entry
-  const handleDeleteEntry = (entryId) => {
-    setFlowData((prevFlowData) =>
-      prevFlowData.filter((entry) => entry.ClientInstructionID !== entryId)
-    );
-  };
+  // const handleDeleteEntry = (entryId) => {
+  //   setFlowData((prevFlowData) =>
+  //     prevFlowData.filter((entry) => entry.ClientInstructionID !== entryId)
+  //   );
+  // };
 
   // Handle refreshing data
   const handleRefresh = () => {
@@ -158,11 +159,11 @@ const AnnuitiesClientInstruction = () => {
                           onClick={() => handleEditEntry(item)} // Open edit modal
                           style={{ cursor: "pointer", marginRight: "18px" }}
                         />
-                        <DeleteAnnuities
-                          key={item.ClientInstructionID}
+                        {/* <DeleteAnnuities */}
+                          {/* key={item.ClientInstructionID} */}
                           entryId={item.ClientInstructionID}
-                          onDeleteEntry={handleDeleteEntry}
-                        />
+                          {/* onDeleteEntry={handleDeleteEntry} */}
+                        {/* /> */}
                       </div>
                     </Td>
                   </Tr>
