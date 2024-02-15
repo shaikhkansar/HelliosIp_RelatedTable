@@ -115,13 +115,11 @@ const AnnuitiesClientInstruction = () => {
       </div>
 
       <div style={{marginTop:"20px"}}>
-      <button onClick={handleRefresh} className="refresh-button saveButton">
-        <RefreshCcw />
-      </button>
+      
       {filteredFlowData &&(
           <div>
             <Table className="table-border table-striped  table table-hover annuities-client-inx">
-              <Thead>
+              <Thead style={{fontSize:"12px"}}>
                 <Tr>
                   <Th>Name</Th>
                   <Th>Jurisdiction</Th>
@@ -129,6 +127,9 @@ const AnnuitiesClientInstruction = () => {
                   <Th>Annuities DueDate</Th>
                   <Th>Item Link</Th>
                   <Th>Action</Th>
+                  <Th>Annuities Id <button onClick={handleRefresh} className="refresh-button saveButton">
+        <RefreshCcw />
+      </button></Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -159,13 +160,14 @@ const AnnuitiesClientInstruction = () => {
                           onClick={() => handleEditEntry(item)} // Open edit modal
                           style={{ cursor: "pointer", marginRight: "18px" }}
                         />
-                        {/* <DeleteAnnuities */}
+                       
+                      </div>
+                    </Td>
+                    <Td>  {/* <DeleteAnnuities */}
                           {/* key={item.ClientInstructionID} */}
                           entryId={item.ClientInstructionID}
                           {/* onDeleteEntry={handleDeleteEntry} */}
-                        {/* /> */}
-                      </div>
-                    </Td>
+                        {/* /> */}</Td>
                   </Tr>
                 ))}
               </Tbody>

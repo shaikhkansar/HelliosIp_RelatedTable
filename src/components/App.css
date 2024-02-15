@@ -233,6 +233,10 @@ body {
   text-align: center;
  }
 
+ .refresh-button{
+  margin-left: 150px;
+ }
+
 
 
 @media only screen and (max-width: 600px) {
@@ -582,7 +586,28 @@ margin-left: 10px!important;
   left:580px
 
  }
+/* side panel size  */
+ .f1j5qnyn {
+  padding-top: 2rem!important;
+}
 
+.fk0ktpv {
+  padding-left: -2rem!important;
+}
 
+.f1au0vf7 {
+  padding-right: 2rem!important;
+}
+
+.pa-nm {
+  /* left: 91.95px; */
+  margin-left: -10px!important;
+}
+
+.mectrl_topHeader .mectrl_profilepic {
+  width: 32px;
+  height: 32px;
+  margin: -13px;
+}
 
  }
