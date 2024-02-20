@@ -61,65 +61,60 @@ const EditAnnuities = ({ entry, onClose, onEdit }) => {
   
   return (
     <div className="container">
-      <Table>
-        <Tbody>
-          <Tr>
-            <Td className="editInput">
-              <div className="inputWrapper">
-                <label className="labelinp">Name:</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="Name"
-                  value={formData.Name}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="inputWrapper">
-                <label className="labelinp">Jurisdiction:</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="Jurisdiction"
-                  value={formData.Jurisdiction}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="inputWrapper">
-                <label className="labelinp">InstructionDate:</label>
-                <input
-                  className="form-control"
-                  type="date"
-                  name="InstructionDate"
-                  value={formData.InstructionDate}
-                  onChange={handleInputChange}
-                  cursor="pointer"
-                />
-              </div>
-              <div className="inputWrapper">
-                <label className="labelinp">AnnuitiesDueDate:</label>
-                <input
-                  className="form-control"
-                  type="date"
-                  name="AnnuitiesDueDate"
-                  value={formData.AnnuitiesDueDate}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="buttonWrapper">
-                <button className="saveButton" onClick={handleEditAnnuities}>
-                  <Save className="icon" />
-                  Save
-                </button>
-                <button className="cancelButton" onClick={onClose}>
-                  <XSquare className="icon" />
-                  Cancel
-                </button>
-              </div>
-            </Td>
-          </Tr>
-        </Tbody>
-      </Table>
+     <div className="editInput">
+  <div className="inputWrapper">
+    {/* <label className="labelinp">Name:</label> */}
+    <input
+      className="form-control"
+      type="text"
+      name="Name"
+      value={formData.Name}
+      onChange={handleInputChange}
+    />
+  </div>
+  <div className="inputWrapper">
+    {/* <label className="labelinp">Jurisdiction:</label> */}
+    <input
+      className="form-control"
+      type="text"
+      name="Jurisdiction"
+      value={formData.Jurisdiction}
+      onChange={handleInputChange}
+    />
+  </div>
+  <div className="inputWrapper">
+    {/* <label className="labelinp">InstructionDate:</label> */}
+    <input
+      className="form-control"
+      type="date"
+      name="InstructionDate"
+      value={formData.InstructionDate}
+      onChange={handleInputChange}
+      cursor="pointer"
+    />
+  </div>
+  <div className="inputWrapper">
+    {/* <label className="labelinp">AnnuitiesDueDate:</label> */}
+    <input
+      className="form-control"
+      type="date"
+      name="AnnuitiesDueDate"
+      value={formData.AnnuitiesDueDate}
+      onChange={handleInputChange}
+    />
+  </div>
+  <div className="buttonWrapper">
+    <button className="saveButton" onClick={handleEditAnnuities}>
+      <Save className="icon" />
+      Save
+    </button>
+    <button className="cancelButton" onClick={onClose}>
+      <XSquare className="icon" />
+      Cancel
+    </button>
+  </div>
+</div>
+
       <pre>{response}</pre>
     </div>
   );

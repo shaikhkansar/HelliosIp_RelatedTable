@@ -71,11 +71,25 @@ button, input, optgroup, select, textarea {
   margin-top: 47px!important;
 }
 .backbutton{
-  margin-left: -490px!important;
+  margin-left: -365px!important;
   margin-bottom: 2px;
- font-size: 18px!important;
-  
+ font-size: 15px!important;
+ color: #5b5fc7;
+ padding: 5px;
+ font-weight: bold;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ transition: background-color 0.3s;
+ width: 100px!important;
+
   }
+  .backbutton:hover{
+    background-color: #5b5fc7; /* lighter color on hover */
+    color: white;
+    width: 100px!important;
+  }
+
 
  /* ProjectInstruction Css */
 .hding{

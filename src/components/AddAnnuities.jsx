@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { UserPlus, SkipBack } from "react-feather";
+import { UserPlus, SkipBack, ArrowLeft } from "react-feather";
 import { v4 as uuidv4 } from "uuid";
 import "./AddAnnuities.css";
 import Tabs from "./Tabs";
@@ -102,17 +102,18 @@ const AddAnnuities = ({ onAddEntry }) => {
         }}
         onClick={handleGoBack}
       >
-        <button className="saveButton" >
-        <SkipBack
+       
+        <ArrowLeft
           // style={{ marginRight: "15px", marginTop: "1px", textDecoration:"none" }}
           data-bs-toggle="tooltip"
           data-bs-placement="top"
           className="backbutton"
+          title="back"
         />
-        Go to back
-        </button>
+       
+       
       </div>
-      <h5 style={{ marginTop: "40px" }}>Add Client Instruction </h5>
+      <h5 style={{ marginTop: "40px" }}>Add Client Instruction</h5>
       <Table className="SuperResponsiveTable table-border table-striped">
         {/* Bootstrap Alert */}
         {showAlert && (

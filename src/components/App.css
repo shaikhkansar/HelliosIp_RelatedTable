@@ -234,7 +234,20 @@ body {
  }
 
  .refresh-button{
-  margin-left: 150px;
+  margin-left: 250px;
+  color: #5b5fc7;
+  padding: 5px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+ }
+
+ .refresh-button:hover{
+  background-color: #5b5fc7; /* lighter color on hover */
+  color: white;
  }
 
 
@@ -536,26 +549,6 @@ margin-left: 10px!important;
   margin-left: -70px!important;
 }
 
-.modal-content {
-  pointer-events: auto;
-  background-color: #fff;
-  /* background-clip: padding-box; */
-  border: 1px solid rgba(0,0,0,.2);
-  border-radius: 0.3rem;
-  outline: 0;
-  margin-left: -50px;
-  width: 300px;
-}
-
-.modelshow{
-  margin-top: 140px!important;
-  margin-left: -10px!important;
-}
-
-.modal.show .modal-dialog {
-  transform: none;
-  width: 327px;
-}
 .editInput {
   /* width: 0%!important; */
   margin-left: -250px;
@@ -569,21 +562,10 @@ margin-left: 10px!important;
   /* padding-left: 2rem; */
 }
 
-.modal {
-  position: fixed;
-  top: -116px;
-  left: -50px;
-  width: 100%;
-}
-
-.modal-header {
-    margin-left: -246px;
-}
-
 .refresh-button{
   position: relative;
-  top:10px;
-  left:580px
+  bottom:210px;
+  left:80px
 
  }
 /* side panel size  */
@@ -609,5 +591,9 @@ margin-left: 10px!important;
   height: 32px;
   margin: -13px;
 }
+.itemlink{
+  margin-left: 10px;
+}
+
 
  }

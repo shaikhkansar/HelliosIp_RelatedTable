@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddAnnuities from "./AddAnnuities";
-import { Edit, SkipBack, Search, Link2, RefreshCcw } from "react-feather"; // Import RefreshCcw icon
+import { Edit, SkipBack, Search, Link2, RefreshCcw,XCircle } from "react-feather"; // Import RefreshCcw icon
 // import DeleteAnnuities from "./DeleteAnnuities";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./App.css";
 import EditAnnuities from "./EditAnnuities";
 import { Modal } from "react-bootstrap";
+import ReactDOM from 'react-dom';
 
 const AnnuitiesClientInstruction = () => {
   const [flowData, setFlowData] = useState(null);
@@ -128,7 +129,7 @@ const AnnuitiesClientInstruction = () => {
                   <Th>Item Link</Th>
                   <Th>Action</Th>
                   <Th>Annuities Id 
-        <RefreshCcw onClick={handleRefresh} className="refresh-button saveButton" />
+        <RefreshCcw onClick={handleRefresh} className="refresh-button" />
      </Th>
                 </Tr>
               </Thead>
@@ -144,18 +145,48 @@ const AnnuitiesClientInstruction = () => {
                       {new Date(item.AnnuitiesDueDate).toLocaleDateString()}
                     </Td>
                     <Td>
-                      <Link2
-                        size="22px"
-                        color="#5b5fc7"
-                        cursor="pointer"
-                        onClick={() => {
-                          window.location.href = item.ItemLink;
-                        }}
-                      />
-                    </Td>
+  <Link2
+  className="itemlink"
+    size="22px"
+    color="#5b5fc7"
+    cursor="pointer"
+    onClick={() => {
+      // Create iframe
+      const iframe = document.createElement('iframe');
+      iframe.src = item.ItemLink;
+      iframe.style.position = 'fixed';
+      iframe.style.top = '50%';
+      iframe.style.left = '50%';
+      iframe.style.width = '100vw';
+      iframe.style.height = '100vh';
+      iframe.style.border = 'none';
+      iframe.style.transform = 'translate(-50%, -50%)';
+      document.body.appendChild(iframe);
+
+      // Create close button using React Feather icon
+      const closeButton = document.createElement('div');
+      closeButton.style.position = 'fixed';
+      closeButton.style.top = '10px';
+      closeButton.style.right = '10px';
+      closeButton.style.cursor = 'pointer';
+      closeButton.style.zIndex = '9999'; // Ensure it's above other elements
+      closeButton.style.marginLeft = '-20px'; // Add margin-left
+      closeButton.addEventListener('click', () => {
+        document.body.removeChild(iframe);
+        document.body.removeChild(closeButton);
+      });
+
+      // Render React Feather close icon inside closeButton div
+      ReactDOM.render(<XCircle size={24} color="white" />, closeButton);
+
+      document.body.appendChild(closeButton);
+    }}
+  />
+</Td>
                     <Td>
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <Edit
+                        className="itemlink"
                           color="#5b5fc7"
                           onClick={() => handleEditEntry(item)} // Open edit modal
                           style={{ cursor: "pointer", marginRight: "18px" }}

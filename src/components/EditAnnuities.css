@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
-  margin-left: -1px;
+  margin-left: -10px;
 }
 
 .inputWrapper {
@@ -20,12 +20,13 @@
 
 .labelinp {
   margin-right: 20px;
-  min-width: 130px;
+  min-width: 20px;
 }
 
 .buttonWrapper {
   margin-top: 30px;
   margin-left: 230px;
+  width: 200px;
 }
 
 
@@ -38,6 +39,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+
 }
 
 .saveButton{
@@ -48,11 +50,12 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-left: -160px;
 }
 
 .cancelButton {
   /* background-color: #b91c1c; */
-  margin-left: 40px;
+  margin-left: 30px;
   color: red;
   padding: 5px;
   font-weight: bold;
@@ -60,6 +63,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 90px;
 
 }
 
@@ -76,13 +80,18 @@
 }
 
 .modelpopup{
-  width: 520px;
+  width: 500px;
   margin-left: 300px;
 }
 
 .icon {
   margin-right: 5px;
 }
+.refresh-button{
+  margin-top: 10px;
+  margin-left: 240px;
+}
+
 
 @media (max-width: 768px) {
     .editInput {
@@ -95,7 +104,26 @@
     }
 
     .modelpopup {
-      width: 400px;
-      margin-left: 100px;
+      width: 300px;
+      margin-left: -1px;
   }
+  .inputWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: -230px;
+    width: 750px!important; /* Specify the width here */
+  }
+  .saveButton{
+    width: 100px;
+  }
+
+  .cancelButton {
+    width: 100px;
+  }
+  .refresh-button{
+    margin-top: 10px;
+    margin-left: 110px;
+  }
+  
 }
