@@ -166,11 +166,11 @@ const AnnuitiesClientInstruction = () => {
       // Create close button using React Feather icon
       const closeButton = document.createElement('div');
       closeButton.style.position = 'fixed';
-      closeButton.style.top = '10px';
+      closeButton.style.top = '2px';
       closeButton.style.right = '10px';
       closeButton.style.cursor = 'pointer';
       closeButton.style.zIndex = '9999'; // Ensure it's above other elements
-      closeButton.style.marginLeft = '-20px'; // Add margin-left
+      closeButton.style.marginLeft = '-30px'; // Add margin-left
       closeButton.addEventListener('click', () => {
         document.body.removeChild(iframe);
         document.body.removeChild(closeButton);
