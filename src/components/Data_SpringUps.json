@@ -1,0 +1,19 @@
+[
+    {
+       "id" : "1",
+       "DeployType" : "SpringUpLabs",
+       "Entity" : "InstructionProject",
+       "url": "https://prod-26.centralindia.logic.azure.com:443/workflows/efc9719714db49568aa4f67696de78f5/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fi5wVx8v9we_OXJrlBLFch_JNgrGJRN_g3Vp7fD7NpM"
+    },
+    {
+        "id" : "2",
+        "Entity" : "Annuities",
+        "url": "https://prod-02.centralindia.logic.azure.com:443/workflows/68997dc6b9fb4f0ebd112781ead4642e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=St2jazQAvlmJ6aVdRN,X_ndjucJFGzCwA2xOwluOULpQ"
+    },
+    {
+        "id" : "3",
+        "Entity" : "ClientInstructionForAnnuities",
+        "url": "https://prod-02.centralindia.logic.azure.com:443/workflows/1cfbd3f3025940db835c4a5c4a605851/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=5rDfrxdePF7I7iRML_s-zv4MAA-Axl--BcobJtqjUvQ"
+    }
+
+]

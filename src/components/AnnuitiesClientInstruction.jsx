@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Data  from "./Data.json";
 
 const AnnuitiesClientInstruction = () => {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    fetch('https://prod-156.westus.logic.azure.com:443/workflows/81462bc99b184115b59100fcd6e15813/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sy3M2pZxs1ZtVRI9PuUJ2J-gz6Xo4ov4NhGAwuIXu_Q', {
+    fetch( Data[1].url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

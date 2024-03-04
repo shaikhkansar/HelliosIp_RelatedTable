@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./App.css";
+import Data  from "./Data.json";
 
 const Anuuities = ({ chatid }) => {
   const [instructionType, setInstructionType] = useState(null);
@@ -20,7 +21,7 @@ const Anuuities = ({ chatid }) => {
         const modifiedEncodedData = encodeddata.replace(/%3A/g, "%3a");
 
         const response = await fetch(
-          "https://prod-07.westus.logic.azure.com:443/workflows/d0bd75861ced48d292ee3703bd8e706c/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NRrbZN0Q8_OGQpH11Df6gXspWgupog6uBy0c021LkBc",
+          Data[0].url,
           {
             method: "POST",
             headers: {
