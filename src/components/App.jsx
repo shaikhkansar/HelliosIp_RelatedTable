@@ -8,6 +8,8 @@ import Tab from "./Tab";
 import "./App.css";
 import Dynamics365Entity from "./Dynamics365Entity";
 import AnnuitiesClientInstruction from "./AnnuitiesClientInstruction";
+import AnnuitiesClientInstructions from "./AnnuitiesClientInstructions";
+import TabAnnuities from "./TabAnnuities";
 
 export default function App() {
   return (
@@ -19,6 +21,7 @@ export default function App() {
         <Route path="/config" element={<TabConfig />} />
         <Route path="/meeting-summary" element={<MeetingSummary />} />
         <Route path="/annuities-client-instruction" element={<AnnuitiesClientInstruction />} />
+        <Route path="/tab-annuities" component={TabAnnuities} />
       </Routes>
     </Router>
   );

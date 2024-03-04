@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import "./App.css"
+import "./App.css";
 
 const Anuuities = ({ chatid }) => {
   const [instructionType, setInstructionType] = useState(null);
@@ -20,7 +20,7 @@ const Anuuities = ({ chatid }) => {
         const modifiedEncodedData = encodeddata.replace(/%3A/g, "%3a");
 
         const response = await fetch(
-          "https://prod-02.centralindia.logic.azure.com:443/workflows/68997dc6b9fb4f0ebd112781ead4642e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=St2jazQAvlmJ6aVdRNX_ndjucJFGzCwA2xOwluOULpQ",
+          "https://prod-07.westus.logic.azure.com:443/workflows/d0bd75861ced48d292ee3703bd8e706c/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NRrbZN0Q8_OGQpH11Df6gXspWgupog6uBy0c021LkBc",
           {
             method: "POST",
             headers: {
@@ -74,10 +74,12 @@ const Anuuities = ({ chatid }) => {
           {error}
         </p>
       ) : loading ? (
-        // <div className="spinner-border text-primary spinner" role="status">
-        //   <span className="visually-hidden">Loading...</span>
-        // </div>
-        <p></p>
+        <>
+          <div className="spinner-border text-primary spinner" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <p></p>
+        </>
       ) : (
         <>
           <h6
@@ -98,15 +100,19 @@ const Anuuities = ({ chatid }) => {
           <div
             style={{ marginLeft: "448px", marginTop: "20px", width: "53.5%" }}
           >
-           <Tr>
+            <Tr>
               <Td>
                 {" "}
-                <p style={{ fontSize: "18px", fontWeight: "bold" }} className="hdng">
-                  Annuities for the above Instruction Type
+                <p
+                  style={{ fontSize: "18px", fontWeight: "bold" }}
+                  className="hdng"
+                >
+                  Annuities Instruction Type
                 </p>
               </Td>
             </Tr>
-            {Array.isArray(instructionType) ? (
+            {Array.isArray(instructionType) && instructionType.length > 0 ? (
+              
               <Table className=" SuperResponsiveTable table-striped table table-hover">
                 <Thead>
                   <Tr>
@@ -120,22 +126,27 @@ const Anuuities = ({ chatid }) => {
                 <Tbody>
                   {instructionType.map((instruction, index) => (
                     <Tr key={index}>
-                      {Object.values(instruction).map((value, valueIndex) => (
-                        <Td key={valueIndex} className="thTdStyle2">
-                          {valueIndex === 0 ? (
-                            <Link
-                              style={{ textDecoration: "none" }}
-                              to={{
-                                pathname: "/annuities-client-instruction",
-                              }}
-                            >
-                              <div>{value}</div>{" "}
-                            </Link>
-                          ) : (
-                            <div>{value.split(" ").join("\n")}</div>
-                          )}
-                        </Td>
-                      ))}
+                      {Object.values(instruction).map((value, valueIndex) => {
+                        console.log("Value:", value); // Add this line for debugging
+                        return (
+                          <Td key={valueIndex} className="thTdStyle2">
+                            {valueIndex === 0 ? (
+                              <Link
+                                style={{ textDecoration: "none" }}
+                                to={{
+                                  pathname: "/annuities-client-instruction",
+                                }}
+                              >
+                                <div>{value}</div>{" "}
+                              </Link>
+                            ) : (
+                              <div>
+                                {value ? value.split(" ").join("\n") : ""}
+                              </div>
+                            )}
+                          </Td>
+                        );
+                      })}
                     </Tr>
                   ))}
                 </Tbody>

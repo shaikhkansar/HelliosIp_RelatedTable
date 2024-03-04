@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { UserPlus, SkipBack, ArrowLeft } from "react-feather";
-import { v4 as uuidv4 } from "uuid";
 import "./AddAnnuities.css";
 import Tabs from "./Tabs";
 import { useNavigate } from "react-router-dom";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 
-// State for Bootstrap alert
 const AddAnnuities = ({ onAddEntry }) => {
   const initialEntryState = {
     Name: "",
@@ -19,7 +17,11 @@ const AddAnnuities = ({ onAddEntry }) => {
   };
   const [newEntry, setNewEntry] = useState({ ...initialEntryState });
   const [showAlert, setShowAlert] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [hovered, setHovered] = useState(false);
+
   const navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewEntry((prevEntry) => ({
@@ -41,14 +43,20 @@ const AddAnnuities = ({ onAddEntry }) => {
   };
 
   const addEntry = async () => {
-    const formattedEntry = {
-      ...newEntry,
-      InstructionDate: formatDate(newEntry.InstructionDate),
-      AnnuitiesDueDate: formatDate(newEntry.AnnuitiesDueDate),
-      AnnuitiesID: "5da82587-cec1-ee11-9079-0022486e6d69",
-    };
-    // Update the UI instantly
+    const { AnnuitiesID, ...formattedEntry } = newEntry;
+
+    const formattedInstructionDate = newEntry.InstructionDate
+      ? formatDate(newEntry.InstructionDate)
+      : null;
+    const formattedAnnuitiesDueDate = newEntry.AnnuitiesDueDate
+      ? formatDate(newEntry.AnnuitiesDueDate)
+      : null;
+
+    formattedEntry.InstructionDate = formattedInstructionDate;
+    formattedEntry.AnnuitiesDueDate = formattedAnnuitiesDueDate;
+
     onAddEntry(formattedEntry);
+
     try {
       const apiUrl =
         "https://prod-12.centralindia.logic.azure.com:443/workflows/bc7faeecf9be472991c1fc22edf34600/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Cp2wPVLh-UjGXpxKgN4GH8QJUjkgyrfYnsMtPRzwNxw";
@@ -61,27 +69,32 @@ const AddAnnuities = ({ onAddEntry }) => {
         body: JSON.stringify(formattedEntry),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Response from server:", data);
+      console.log("Request URL:", apiUrl);
 
-        // Update the UI by calling the onAddEntry prop
-        onAddEntry(formattedEntry);
+      if (response.status === 202) {
+        console.log("Response status:", response.status);
+      } else if (response.ok) {
+        console.log("Response status:", response.status);
+
+        const responseData = await response.json();
+        console.log("Parsed JSON response:", responseData);
+
+        setShowAlert(true);
+
+        resetForm();
       } else {
-        console.error("Failed to add new entry:", response.statusText);
+        console.error(
+          "Failed to add new entry. Server returned status:",
+          response.status
+        );
+        const errorText = await response.text();
+        console.error("Error text:", errorText);
       }
-      // Update the UI by calling the onAddEntry prop
-      onAddEntry(formattedEntry);
-
-      // Show the Bootstrap alert
-      setShowAlert(true);
-
-      // Reset the form inputs
-      resetForm();
     } catch (error) {
       console.error("Error adding new entry:", error);
     }
   };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -102,7 +115,6 @@ const AddAnnuities = ({ onAddEntry }) => {
         }}
         onClick={handleGoBack}
       >
-       
         <ArrowLeft
           // style={{ marginRight: "15px", marginTop: "1px", textDecoration:"none" }}
           data-bs-toggle="tooltip"
@@ -110,77 +122,92 @@ const AddAnnuities = ({ onAddEntry }) => {
           className="backbutton"
           title="back"
         />
-       
-       
       </div>
-      <h5 style={{ marginTop: "40px" }}>Add Client Instruction</h5>
-      <Table className="SuperResponsiveTable table-border table-striped">
-        {/* Bootstrap Alert */}
-        {showAlert && (
-          <div className="alert alert-success" role="alert">
-            Added successfully!
-          </div>
-        )}
-        <Tbody className="addannuities">
-          <Tr>
-            <Td className="">
-              <input
-                className="form-control responsiveTd"
-                type="text"
-                name="Name"
-                value={newEntry.Name}
-                onChange={handleInputChange}
-                placeholder="Type Name here..."
-              />
-            </Td>
-            <Td className="">
-              <input
-                className="form-control responsiveTd"
-                type="text"
-                name="Jurisdiction"
-                value={newEntry.Jurisdiction}
-                onChange={handleInputChange}
-                placeholder="Type Jurisdiction here..."
-              />
-            </Td>
-            <Td className="">
-              <DatePicker
-                placeholder="Select Date"
-                className="form-control responsiveTd"
-                selected={newEntry.InstructionDate}
-                onChange={(date) =>
-                  setNewEntry({ ...newEntry, InstructionDate: date })
-                }
-                dateFormat="yyyy / MM / dd"
-                placeholderText="Select Instruction Date"
-              />
-            </Td>
-            <Td className="">
-              <DatePicker
-                className="form-control responsiveTd"
-                selected={newEntry.AnnuitiesDueDate}
-                onChange={(date) =>
-                  setNewEntry({ ...newEntry, AnnuitiesDueDate: date })
-                }
-                dateFormat="yyyy / MM / dd"
-                placeholderText="Select Annuities Due Date"
-              />
-            </Td>
-            <Td>
-              <button
-                className="btn btn-success addentry"
-                type="submit"
-                onClick={addEntry}
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Add Entry"
-              >
-                <UserPlus className="addentryicn" />
-              </button>
-            </Td>
-          </Tr>
-        </Tbody>
-      </Table>
+      <h5
+        style={{
+          marginTop: "40px",
+          cursor: "pointer",
+          backgroundColor: hovered ? "#444791" : "transparent",
+          transition: "background-color 0.3s ease",
+          width: "300px",
+          padding:"10px",
+          borderRadius:"4px",
+          color: hovered ? 'white' : '#000'
+          }}
+        onClick={() => setShowForm(!showForm)}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        Click to Add Client Instruction
+      </h5>
+      {showForm && (
+        <Table className="SuperResponsiveTable table-border table-striped">
+          {showAlert && (
+            <div className="alert alert-success" role="alert">
+              Added successfully!
+            </div>
+          )}
+          <Tbody className="addannuities">
+            <Tr>
+              <Td className="">
+                <input
+                  className="form-control responsiveTd"
+                  type="text"
+                  name="Name"
+                  value={newEntry.Name}
+                  onChange={handleInputChange}
+                  placeholder="Type Name here..."
+                />
+              </Td>
+              <Td className="">
+                <input
+                  className="form-control responsiveTd"
+                  type="text"
+                  name="Jurisdiction"
+                  value={newEntry.Jurisdiction}
+                  onChange={handleInputChange}
+                  placeholder="Type Jurisdiction here..."
+                />
+              </Td>
+              <Td className="">
+                <DatePicker
+                  placeholder="Select Date"
+                  className="form-control responsiveTd"
+                  selected={newEntry.InstructionDate}
+                  onChange={(date) =>
+                    setNewEntry({ ...newEntry, InstructionDate: date })
+                  }
+                  dateFormat="MM / dd / yyyy"
+                  placeholderText="Select Instruction Date"
+                />
+              </Td>
+              <Td className="">
+                <DatePicker
+                  className="form-control responsiveTd"
+                  selected={newEntry.AnnuitiesDueDate}
+                  onChange={(date) =>
+                    setNewEntry({ ...newEntry, AnnuitiesDueDate: date })
+                  }
+                  dateFormat="MM / dd / yyyy"
+                  placeholderText="Select Annuities Due Date"
+                />
+              </Td>
+              <Td>
+                <button
+                  className="btn btn-success addentry"
+                  type="submit"
+                  onClick={addEntry}
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Add Entry"
+                >
+                  <UserPlus className="addentryicn" />
+                </button>
+              </Td>
+            </Tr>
+          </Tbody>
+        </Table>
+      )}
     </div>
   );
 };

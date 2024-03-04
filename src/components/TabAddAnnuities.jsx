@@ -1,14 +1,10 @@
 import React from "react";
 import { app, teamsCore } from "@microsoft/teams-js";
 import "./App.css";
-import Annuities from "./Anuuities";
-import InstructionProject from "./InstructionProject";
-import ProjectInstruction from "./ProjectInstruction";
-import AnnuitiesClientInstruction from "./AnnuitiesClientInstruction";
-import AnnuitiesClientInstructions from "./AnnuitiesClientInstructions";
-import AddAnnuitty from "./AddAnnuitty";
-// import IframComp from "./IframComp";
-class Tab extends React.Component {
+
+import AddAnnuities from "./AddAnnuities";
+
+class TabAddAnnuities extends React.Component {
   constructor(props) {
     super(props);
 
@@ -52,20 +48,10 @@ class Tab extends React.Component {
 
     return (
       <div padding-left="0px">
-        {/* <p>{meetingId}</p> */}
-        {/* <p>{chatId}</p> */}
-        {/* {<MeetingSummary chatid={chatId} />} */}
-        {/* <Dynamics365Entity/> */}
-        {/* <InstructionProject chatid={chatId} /> */}
-        <Annuities chatid={chatId} />
-        {/* <AnnuitiesClientInstructions chatid={chatId} /> */}
-        {/* <AnuuitiesProjectId chatid={chatId}/> */}
-        {/* <ProjectInstruction chatid={chatId} /> */}
-        {/* <IframComp /> */}
-        {/* <AddAnnuitty chatid={chatId} /> */}
+      <AddAnnuities chatid={chatId}/>
       </div>
     );
   }
 }
 
-export default Tab;
+export default TabAddAnnuities;

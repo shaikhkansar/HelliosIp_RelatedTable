@@ -1,10 +1,11 @@
 import React from "react";
 import { app, teamsCore } from "@microsoft/teams-js";
 import "./App.css";
-import Annuities from "./Anuuities";
-import InstructionProject from "./InstructionProject";
 import ProjectInstruction from "./ProjectInstruction";
 import AnuuitiesProjectId from "./AnuuitiesProjectId";
+import AnnuitiesClientInstructions from "./AnnuitiesClientInstructions";
+import Annuities from "./Anuuities";
+
 class Tabs extends React.Component {
   constructor(props) {
     super(props);
@@ -49,14 +50,11 @@ class Tabs extends React.Component {
 
     return (
       <div padding-left="0px">
-        {/* <p>{meetingId}</p> */}
-        {/* <p>{chatId}</p> */}
-        {/* {<MeetingSummary chatid={chatId} />} */}
-        {/* <Dynamics365Entity/> */}
-        {/* <InstructionProject chatid={chatId} /> */}
-        {/* <Annuities chatid={chatId} /> */}
         <ProjectInstruction chatid={chatId}/>
         <AnuuitiesProjectId chatid={chatId}/>
+        {/* <AnnuitiesClientInstructions chatid={chatId}/> */}
+
+
       </div>
     );
   }
