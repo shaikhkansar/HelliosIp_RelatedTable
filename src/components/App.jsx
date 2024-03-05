@@ -8,7 +8,6 @@ import Tab from "./Tab";
 import "./App.css";
 import AnnuitiesClientInstruction from "./AnnuitiesClientInstruction";
 import AnnuitiesClientInstructions from "./AnnuitiesClientInstructions";
-import TabAnnuities from "./TabAnnuities";
 
 export default function App() {
   return (
@@ -19,7 +18,6 @@ export default function App() {
         <Route path="/tab" element={<Tab />} />
         <Route path="/config" element={<TabConfig />} />
         <Route path="/annuities-client-instruction" element={<AnnuitiesClientInstruction />} />
-        <Route path="/tab-annuities" component={TabAnnuities} />
       </Routes>
     </Router>
   );

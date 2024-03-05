@@ -21,7 +21,7 @@ const Anuuities = ({ chatid }) => {
         const modifiedEncodedData = encodeddata.replace(/%3A/g, "%3a");
 
         const response = await fetch(
-          Data[0].url,
+          Data[1].url,
           {
             method: "POST",
             headers: {
@@ -142,7 +142,7 @@ const Anuuities = ({ chatid }) => {
                               </Link>
                             ) : (
                               <div>
-                                {value ? value.split(" ").join("\n") : ""}
+                                {typeof value === 'string' ? value.split(" ").join("\n") : ""}
                               </div>
                             )}
                           </Td>

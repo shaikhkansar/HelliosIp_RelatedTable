@@ -2,11 +2,6 @@ import React from "react";
 import { app, teamsCore } from "@microsoft/teams-js";
 import "./App.css";
 import Annuities from "./Anuuities";
-import InstructionProject from "./InstructionProject";
-import ProjectInstruction from "./ProjectInstruction";
-import AnnuitiesClientInstruction from "./AnnuitiesClientInstruction";
-import AnnuitiesClientInstructions from "./AnnuitiesClientInstructions";
-import AddAnnuitty from "./AddAnnuitty";
 // import IframComp from "./IframComp";
 class Tab extends React.Component {
   constructor(props) {

@@ -9,14 +9,14 @@
         "id" : "2",
         "DeployType" : "HeliosIP",
         "Entity" : "Annuities",
-        "url": "https://prod-156.westus.logic.azure.com:443/workflows/81462bc99b184115b59100fcd6e15813/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sy3M2pZxs1ZtVRI9PuUJ2J-gz6Xo4ov4NhGAwuIXu_Q"
+        "url": "https://prod-07.westus.logic.azure.com:443/workflows/d0bd75861ced48d292ee3703bd8e706c/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NRrbZN0Q8_OGQpH11Df6gXspWgupog6uBy0c021LkBc"
     },
 
     {
         "id" : "3",
         "DeployType" : "HeliosIP",
         "Entity" : "Patents",
-        "url": " https://prod-70.westus.logic.azure.com:443/workflows/88744f74f3cb47bd99e12e94b35fbe61/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YD3yuUx_ac_46FeDQmXjbAWjA_YvCd1jCrvLyvQNhgA"
+        "url": " https://prod-156.westus.logic.azure.com:443/workflows/81462bc99b184115b59100fcd6e15813/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sy3M2pZxs1ZtVRI9PuUJ2J-gz6Xo4ov4NhGAwuIXu_Q"
     }
 
 ]
