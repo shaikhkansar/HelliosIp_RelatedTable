@@ -5,7 +5,7 @@ const AnnuitiesClientInstruction = () => {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
-    fetch( Data[1].url, {
+    fetch( Data[2].url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
