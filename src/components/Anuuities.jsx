@@ -1,16 +1,15 @@
-// 2nd Table  heading (Annuities for the above Instruction Type)
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./App.css";
-import Data  from "./Data.json";
+import Data from "./Data.json";
+import EditAnnuities from "./EditAnnuities"; // Import the EditAnnuities component
+import { Edit } from "react-feather";
 
 const Anuuities = ({ chatid }) => {
   const [instructionType, setInstructionType] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [editIndex, setEditIndex] = useState(null); // Track the index of the item being edited
 
   useEffect(() => {
     let isMounted = true;
@@ -20,24 +19,16 @@ const Anuuities = ({ chatid }) => {
         const encodeddata = encodeURIComponent(chatid);
         const modifiedEncodedData = encodeddata.replace(/%3A/g, "%3a");
 
-        const response = await fetch(
-          Data[1].url,
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              chatid: modifiedEncodedData,
-            }),
-          }
-        );
-
-        // if (response.status !== 200) {
-        //   setError("This meeting is not compatible for this App !!!");
-        //   throw new Error("This meeting is not compatible for this App !!!");
-        // }
+        const response = await fetch(Data[1].url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chatid: modifiedEncodedData,
+          }),
+        });
 
         if (!response.ok) {
           throw new Error("Error fetching meeting details");
@@ -68,6 +59,10 @@ const Anuuities = ({ chatid }) => {
     };
   }, [chatid]);
 
+  const handleEditClick = (index) => {
+    setEditIndex(index);
+  };
+
   return (
     <div className="App" style={{ marginTop: "40px", marginRight: "60px" }}>
       {error ? (
@@ -97,64 +92,33 @@ const Anuuities = ({ chatid }) => {
             {/* {chatid} */}
             {/* Flow_GetInstructionProjectIDFromChatID */}
           </h6>
-          {/* <h5 style={{ marginLeft: "350px", marginTop: "20px", width: "520px", fontSize:"35px" }}>List of Annuities</h5> */}
+          <h5 style={{ marginLeft: "450px", marginTop: "20px", width: "520px", fontSize:"35px" }}>Annuities</h5>
           <div
             style={{ marginLeft: "448px", marginTop: "20px", width: "53.5%" }}
           >
-            <Tr>
-              <Td>
-                {" "}
-                <p
-                  style={{ fontSize: "18px", fontWeight: "bold" }}
-                  className="hdng"
-                >
-                  Annuities Instruction Type
-                </p>
-              </Td>
-            </Tr>
-            {Array.isArray(instructionType) && instructionType.length > 0 ? (
-              
-              <Table className=" SuperResponsiveTable table-striped table table-hover">
-                <Thead>
-                  <Tr>
-                    {Object.keys(instructionType[0]).map((property) => (
-                      <Th key={property} className="thTdStyle">
-                        {property}
-                      </Th>
-                    ))}
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  {instructionType.map((instruction, index) => (
-                    <Tr key={index}>
-                      {Object.values(instruction).map((value, valueIndex) => {
-                        console.log("Value:", value); // Add this line for debugging
-                        return (
-                          <Td key={valueIndex} className="thTdStyle2">
-                            {valueIndex === 0 ? (
-                              <Link
-                                style={{ textDecoration: "none" }}
-                                to={{
-                                  pathname: "/annuities-client-instruction",
-                                }}
-                              >
-                                <div>{value}</div>{" "}
-                              </Link>
-                            ) : (
-                              <div>
-                                {typeof value === 'string' ? value.split(" ").join("\n") : ""}
-                              </div>
-                            )}
-                          </Td>
-                        );
-                      })}
-                    </Tr>
-                  ))}
-                </Tbody>
-              </Table>
-            ) : (
-              <p>No data available</p>
-            )}
+            <div className="card-container">
+              {Array.isArray(instructionType) && instructionType.length > 0 ? (
+                instructionType.map((instruction, index) => (
+                  <div key={index} className="card">
+                    <h3>Name: {instruction.Name}</h3>
+                    <p>Primary Category: {instruction.PrimaryCategory}</p>
+                    <p>Jurisdiction: {instruction.Jurisdiction}</p>
+                    <p>PayTerm: {instruction.PayTerm}</p>
+                    <p>PayYear: {instruction.PayYear}</p>
+                    {/* Add more properties as needed */}
+                    {editIndex === index ? ( // Render EditAnnuities component if index matches the editing index
+                    <EditAnnuities />
+                    ) : (
+                      <Link className="link">
+                        <Edit onClick={() => handleEditClick(index)}/>
+                      </Link>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p>No data available</p>
+              )}
+            </div>
           </div>
         </>
       )}

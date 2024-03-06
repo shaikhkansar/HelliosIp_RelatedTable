@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/termsofuse" element={<TermsOfUse />} />
         <Route path="/tab" element={<Tab />} />
         <Route path="/config" element={<TabConfig />} />
-        <Route path="/annuities-client-instruction" element={<AnnuitiesClientInstruction />} />
+        <Route path="/annuities-client-instructions" element={<AnnuitiesClientInstructions />} />
       </Routes>
     </Router>
   );

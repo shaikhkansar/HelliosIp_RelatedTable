@@ -1,122 +1,116 @@
-import React, { useState } from "react";
-import { Save, XSquare } from "react-feather";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import "./EditAnnuities.css";
+import React, { useState,useEffect } from "react";
+import { Save, XSquare, Edit } from "react-feather";
 
-const EditAnnuities = ({ entry, onClose, onEdit }) => {
-  const [formData, setFormData] = useState({
-    AnnuitiesClientInstructionID: entry?.ClientInstructionID || "",
-    Name: entry?.Name || "",
-    Jurisdiction: entry?.Jurisdiction || "",
-    "Instruction Date": entry?.InstructionDate || "",
-    "Annuities Due Date": entry?.AnnuitiesDueDate || "",
-  });
-  const [response, setResponse] = useState("");
+const EditAnnuities = ({ initialPayTerm, initialPayYear }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [payTerm, setPayTerm] = useState("");
+  const [payYear, setPayYear] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+  const handleEditClick = () => {
+    setIsEditing(true);
   };
 
-  const handleEditAnnuities = async () => {
-    try {
-      console.log("Sending request...");
-      const editedEntry = { ...entry, ...formData };
-      const response = await fetch(
-        "https://prod-09.centralindia.logic.azure.com:443/workflows/53cbed9ffcb64ada93f3093559b26ce4/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0SmgrwmyywrGfWZFpkj4DfRlxWJhb7S4JgUG_I-Z0UI",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(editedEntry),
-        }
-      );
-      console.log("Response received:", response);
+  // Update state when initial values change
+  useEffect(() => {
+    setPayTerm(initialPayTerm);
+    setPayYear(initialPayYear);
+  }, [initialPayTerm, initialPayYear]);
+
+  const handleSaveClick = () => {
+    setIsEditing(false);
+    // Format the payYear date to "dd/MM/yyyy" before sending
+    const formattedPayYear = formatDate(payYear);
+  
+    // Prepare data to send
+    const data = {
+      payTerm: payTerm,
+      payYear: formattedPayYear
+    };
+  
+    // Send POST request to the endpoint
+    fetch('https://prod-143.westus.logic.azure.com:443/workflows/90a302fbee3e4bef8d2a0ff5954e6093/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=R_kKpbcUVfu9iiXwnMCwqu_yw8WzOEVz1GUJ1tfrpvY', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error('Failed to save entry');
       }
-  
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        const updatedEntry = await response.json();
-        console.log("Updated Entry:", updatedEntry);
-  
-        // Call the onEdit function provided by the parent component
-        onEdit(updatedEntry);
+      // Check if response contains any content
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        // Parse JSON response
+        return response.json();
       } else {
-        setResponse("Non-JSON response received");
+        // No content in response, consider it a success
+        setIsEditing(false);
+        alert('Data saved successfully!');
+        return null; // Return null to skip further processing
       }
-    } catch (error) {
-      console.error("Error during API call:", error);
-    } finally {
-      // Close the modal or perform any other action after editing
-      onClose();
-    }
+    })
+    .then(data => {
+      if (data !== null) {
+        // Handle successful response here if there's JSON data
+        console.log('Entry saved successfully:', data);
+      }
+    })
+    .catch(error => {
+      // Handle error
+      console.error('Error saving entry:', error);
+      // Optionally, you can display an error message to the user
+    });
   };
   
-  return (
-    <div className="container">
-     <div className="editInput">
-  <div className="inputWrapper">
-    {/* <label className="labelinp">Name:</label> */}
-    <input
-      className="form-control"
-      type="text"
-      name="Name"
-      value={formData.Name}
-      onChange={handleInputChange}
-    />
-  </div>
-  <div className="inputWrapper">
-    {/* <label className="labelinp">Jurisdiction:</label> */}
-    <input
-      className="form-control"
-      type="text"
-      name="Jurisdiction"
-      value={formData.Jurisdiction}
-      onChange={handleInputChange}
-    />
-  </div>
-  <div className="inputWrapper">
-    {/* <label className="labelinp">InstructionDate:</label> */}
-    <input
-      className="form-control"
-      type="date"
-      name="InstructionDate"
-      value={formData.InstructionDate}
-      onChange={handleInputChange}
-      cursor="pointer"
-    />
-  </div>
-  <div className="inputWrapper">
-    {/* <label className="labelinp">AnnuitiesDueDate:</label> */}
-    <input
-      className="form-control"
-      type="date"
-      name="AnnuitiesDueDate"
-      value={formData.AnnuitiesDueDate}
-      onChange={handleInputChange}
-    />
-  </div>
-  <div className="buttonWrapper">
-    <button className="saveButton" onClick={handleEditAnnuities}>
-      <Save className="icon" />
-      Save
-    </button>
-    <button className="cancelButton" onClick={onClose}>
-      <XSquare className="icon" />
-      Cancel
-    </button>
-  </div>
-</div>
+  
 
-      <pre>{response}</pre>
-    </div>
+  const handleCancelClick = () => {
+    // Handle canceling edit
+    setIsEditing(false);
+    // Reset input fields to initial values
+    setPayTerm(initialPayTerm);
+    setPayYear(initialPayYear);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    return formattedDate;
+  };
+
+  return (
+    <div>
+    {isEditing ? (
+      <div>
+        <label htmlFor="payTerm">Pay Term:</label>
+        <input
+          className="form-control"
+          type="text"
+          id="payTerm"
+          value={payTerm}
+          onChange={(e) => setPayTerm(e.target.value)}
+        />
+        <br />
+        <label htmlFor="payYear">Pay Year:</label>
+        <input
+          className="form-control"
+          type="Date"
+          id="payYear"
+          value={payYear}
+          onChange={(e) => setPayYear(e.target.value)}
+        />
+        <br />
+        <Save onClick={handleSaveClick} />
+        <XSquare onClick={handleCancelClick} />
+      </div>
+    ) : (
+      <div>
+        <Edit onClick={handleEditClick} />
+      </div>
+    )}
+  </div>
   );
 };
 
