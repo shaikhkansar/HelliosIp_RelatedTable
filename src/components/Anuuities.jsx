@@ -29,6 +29,11 @@ const Anuuities = ({ chatid }) => {
       });
 
       if (!response.ok) {
+        if (response.status === 502) {
+          // No need to display error for a 502 Bad Gateway status
+          console.warn("Failed to fetch meeting details (status 502)");
+          return;
+        }
         throw new Error(
           `Failed to fetch meeting details (status ${response.status})`
         );
