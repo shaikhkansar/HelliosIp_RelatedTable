@@ -147,7 +147,7 @@ const Anuuities = ({ chatid }) => {
                 marginLeft: "450px",
                 marginTop: "20px",
                 width: "520px",
-                fontSize: "35px",
+                fontSize: "20px",
               }}
             >
               Annuities
