@@ -12,6 +12,10 @@ const Anuuities = ({ chatid }) => {
   const [editIndex, setEditIndex] = useState(null); // Track the index of the item being edited
   const [editedFields, setEditedFields] = useState({});
   const [showAnnuities, setShowAnnuities] = useState(true); // State to toggle between Annuities and Test heading
+  const [annuityID, setAnnuityID] = useState(null);
+  const [showAnnuityID, setShowAnnuityID] = useState(true);
+
+  console.log("showAnnuityID:", showAnnuityID);
 
   const fetchData = async () => {
     try {
@@ -67,10 +71,11 @@ const Anuuities = ({ chatid }) => {
     setEditIndex(index);
     setShowAnnuities(false); // Hide the heading when edit button is clicked
     // Set the old value of Comments
-  setEditedFields({
-    ...editedFields,
-    Comments: instructionType[index]?.ClientInstructionComments || "", // Use the current value or empty string if not available
-  });
+    setAnnuityID(instructionType[index]?.AnnuityID);
+    setEditedFields({
+      ...editedFields,
+      Comments: instructionType[index]?.ClientInstructionComments || "", // Use the current value or empty string if not available
+    });
   };
 
   const handleInputChange = (e, key) => {
@@ -136,7 +141,7 @@ const Anuuities = ({ chatid }) => {
       console.error("Error saving changes:", error);
     }
   };
-
+  console.log("Rendering paragraphs. showAnnuityID:", showAnnuityID);
   return (
     <div className="App" style={{ marginTop: "40px", marginRight: "60px" }}>
       {error ? (
@@ -174,15 +179,16 @@ const Anuuities = ({ chatid }) => {
                     {editIndex !== null && editIndex !== index ? null : (
                       <>
                         <h3>Name: {instruction.Name}</h3>
-                        <p>Primary Category: {instruction.PrimaryCategory}</p>
-                        <p>AnnuityID: {instruction.AnnuityID}</p>
+                        {/* <p>Primary Category: {instruction.PrimaryCategory}</p> */}
+                        {/* <p className={showAnnuityID ? "" : "hidden"}>
+                          AnnuityID: {instruction.AnnuityID}
+                        </p> */}
                         <p>Annuity Due-Date: {instruction.AnnuityDueDate}</p>
-                        <p>
+                        {/* <p>
                           Standing Instructions:{" "}
                           {instruction.StandingInstructions}
                         </p>
-                        <p>Total Fees (Base): {instruction.TotalFees}</p>
-                        <p>AnnuityID: {instruction.AnnuityID}</p>
+                        <p>Total Fees (Base): {instruction.TotalFees}</p> */}
                         {editIndex === index ? (
                           <>
                             <label>Instructions:</label>
@@ -208,11 +214,9 @@ const Anuuities = ({ chatid }) => {
                             <label>Comments:</label>
                             <textarea
                               className="form-control"
-                              
                               value={
                                 editedFields["Comments"] ??
-                                instructionType[index]
-                                  ?.Comments
+                                instructionType[index]?.Comments
                               }
                               onChange={(e) => handleInputChange(e, "Comments")}
                             />
@@ -243,7 +247,9 @@ const Anuuities = ({ chatid }) => {
                         ) : (
                           <>
                             <p>Instructions: {instruction.Instructions}</p>
-                            <p>Comments: {instruction.ClientInstructionComments}</p>
+                            <p>
+                              Comments: {instruction.ClientInstructionComments}
+                            </p>
                             {/* Add more properties as needed */}
                             <Link className="link">
                               <Edit
@@ -262,7 +268,7 @@ const Anuuities = ({ chatid }) => {
               )}
             </div>
           </div>
-          {/* <PatentsForAnnuities/> */}
+          {/* {annuityID && <PatentsForAnnuities annuityID={annuityID} />} */}
         </>
       )}
     </div>
