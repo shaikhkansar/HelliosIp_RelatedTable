@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./App.css";
 import Data from "./Data.json";
 import { Edit, XSquare, Save } from "react-feather";
+import PatentsForAnnuities from "./PatentForAnnuities";
 
 const Anuuities = ({ chatid }) => {
   const [instructionType, setInstructionType] = useState(null);
@@ -65,6 +66,11 @@ const Anuuities = ({ chatid }) => {
   const handleEditClick = (index) => {
     setEditIndex(index);
     setShowAnnuities(false); // Hide the heading when edit button is clicked
+    // Set the old value of Comments
+  setEditedFields({
+    ...editedFields,
+    Comments: instructionType[index]?.ClientInstructionComments || "", // Use the current value or empty string if not available
+  });
   };
 
   const handleInputChange = (e, key) => {
@@ -256,6 +262,7 @@ const Anuuities = ({ chatid }) => {
               )}
             </div>
           </div>
+          {/* <PatentsForAnnuities/> */}
         </>
       )}
     </div>

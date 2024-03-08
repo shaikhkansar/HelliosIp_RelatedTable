@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Data  from "./Data.json";
 
-const AnnuitiesClientInstruction = () => {
+const PatentForAnnuities = () => {
   const [details, setDetails] = useState([]);
 
   useEffect(() => {
@@ -38,4 +38,4 @@ const AnnuitiesClientInstruction = () => {
   );
 }
 
-export default AnnuitiesClientInstruction;
+export default PatentForAnnuities;
