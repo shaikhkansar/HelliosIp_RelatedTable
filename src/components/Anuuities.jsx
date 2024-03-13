@@ -7,6 +7,7 @@ import PatentsForAnnuities from "./PatentForAnnuities";
 
 const Anuuities = ({ chatid }) => {
   const [instructionType, setInstructionType] = useState(null);
+  console.log("responseData instruction type", instructionType);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [editIndex, setEditIndex] = useState(null); // Track the index of the item being edited
@@ -148,6 +149,19 @@ const Anuuities = ({ chatid }) => {
       console.error("Error saving changes:", error);
     }
   };
+  const optionMapping = {
+    "910310000": "Pay",
+    "846440001": "Pay in Grace Period",
+    "846440002": "Hold for Instructions",
+    "910310003": "Do Not Pay",
+    "591930001": "Pay Others Channel",
+    "910310001": "Paid with Parent"
+    // add more values if required
+  };
+  const getTextFormat = (value) => {
+    return optionMapping[value] || "";
+  };
+  
   console.log("Rendering paragraphs. showAnnuityID:", showAnnuityID);
   return (
     <div className="App" style={{ marginTop: "40px", marginRight: "60px" }}>
@@ -202,8 +216,9 @@ const Anuuities = ({ chatid }) => {
                             <select
                               className="form-control"
                               value={
-                                editedFields["Instructions"] ||
-                                instruction.Instructions
+                                editedFields["Instructions"] !== undefined
+                                  ? editedFields["Instructions"]
+                                  : instruction.Instructions
                               }
                               onChange={(e) =>
                                 handleInputChange(e, "Instructions")
@@ -211,12 +226,21 @@ const Anuuities = ({ chatid }) => {
                             >
                               <option value="0">--Select--</option>
                               <option value="910310000">Pay</option>
-                              <option value="846440001">Pay in Grace Period</option>
-                              <option value="846440002">Hold for Instructions</option>
+                              <option value="846440001">
+                                Pay in Grace Period
+                              </option>
+                              <option value="846440002">
+                                Hold for Instructions
+                              </option>
                               <option value="910310003">Do Not Pay</option>
-                              <option value="591930001">Pay Others Channel</option>
-                              <option value="910310001">Paid with Parent</option>
+                              <option value="591930001">
+                                Pay Others Channel
+                              </option>
+                              <option value="910310001">
+                                Paid with Parent
+                              </option>
                             </select>
+
                             <br />
                             <label>Comments:</label>
                             <textarea
@@ -253,7 +277,7 @@ const Anuuities = ({ chatid }) => {
                           </>
                         ) : (
                           <>
-                            <p>Instructions: {instruction.Instructions}</p>
+                            <p>Instructions: {getTextFormat(instruction.Instructions)}</p>
                             <p>
                               Comments: {instruction.ClientInstructionComments}
                             </p>
