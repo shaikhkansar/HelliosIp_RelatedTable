@@ -14,11 +14,13 @@ const Anuuities = ({ chatid }) => {
   const [showAnnuities, setShowAnnuities] = useState(true); // State to toggle between Annuities and Test heading
   const [annuityID, setAnnuityID] = useState(null);
   const [showAnnuityID, setShowAnnuityID] = useState(true);
+  const [showSpinner, setShowSpinner] = useState(false); // State to control spinner visibility
 
   console.log("showAnnuityID:", showAnnuityID);
 
   const fetchData = async () => {
     try {
+      setLoading(true); // Show the spinner
       const encodeddata = encodeURIComponent(chatid);
       const modifiedEncodedData = encodeddata.replace(/%3A/g, "%3a");
 
@@ -54,11 +56,13 @@ const Anuuities = ({ chatid }) => {
       console.log("Updated instructionType:", responseData);
       setError(null);
       setLoading(false);
+      setShowSpinner(false); // Hide the spinner
 
       console.log("Meeting details:", responseData);
     } catch (error) {
       setError(`Error fetching meeting details: ${error.message}`);
       setLoading(false);
+      setShowSpinner(false); // Hide the spinner
       console.error("Error fetching meeting details", error);
     }
   };
@@ -112,6 +116,9 @@ const Anuuities = ({ chatid }) => {
       };
 
       console.log("editedData", editedData);
+
+      // Show the spinner
+      setShowSpinner(true);
 
       // Make a POST request to the endpoint with the payload
       const response = await fetch(
@@ -202,13 +209,13 @@ const Anuuities = ({ chatid }) => {
                                 handleInputChange(e, "Instructions")
                               }
                             >
-                              <option value="1">--Select--</option>
-                              <option value="2">Pay</option>
-                              <option value="3">Pay in Grace Period</option>
-                              <option value="4">Hold for Instructions</option>
-                              <option value="5">Do Not Pay</option>
-                              <option value="6">Pay Others Channel</option>
-                              <option value="7">Paid with Parent</option>
+                              <option value="0">--Select--</option>
+                              <option value="910310000">Pay</option>
+                              <option value="846440001">Pay in Grace Period</option>
+                              <option value="846440002">Hold for Instructions</option>
+                              <option value="910310003">Do Not Pay</option>
+                              <option value="591930001">Pay Others Channel</option>
+                              <option value="910310001">Paid with Parent</option>
                             </select>
                             <br />
                             <label>Comments:</label>
@@ -269,6 +276,11 @@ const Anuuities = ({ chatid }) => {
             </div>
           </div>
           {/* {annuityID && <PatentsForAnnuities annuityID={annuityID} />} */}
+          {showSpinner && (
+            <div className="spinner-border text-primary spinner" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          )}
         </>
       )}
     </div>
