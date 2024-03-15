@@ -320,18 +320,10 @@ body {
 @media only screen and (max-width: 600px) {
 
 
-  .fk0ktpv {
-    padding-left: 0rem;
-}
-
-.f1j5qnyn {
-  padding-top: 0rem;
-}
-
-  body {
-    overflow-x: none;
-    overflow-y: none;
-    margin: 20px!important;
+ body {
+    overflow-x: hidden!important;
+    overflow-y: none!important;
+    margin: -10px!important;
     
   }
 

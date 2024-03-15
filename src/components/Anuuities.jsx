@@ -167,12 +167,7 @@ const Anuuities = ({ chatid }) => {
   
   console.log("Rendering paragraphs. showAnnuityID:", showAnnuityID);
 
-    // Handle refreshing data
-    const handleRefresh = () => {
-      fetchData();
-    };
-
-  return (
+    return (
     <div className="App" style={{ marginTop: "40px", marginRight: "60px" }}>
       {error ? (
         <p style={{ marginLeft: "80px", color: "red", fontSize: "16px" }}>
