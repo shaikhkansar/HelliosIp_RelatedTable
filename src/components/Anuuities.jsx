@@ -143,6 +143,9 @@ const Anuuities = ({ chatid }) => {
       setEditIndex(null);
       setEditedFields({});
 
+         // Show the Annuities heading again
+    setShowAnnuities(true);
+
       // After saving changes, fetch meeting details again to update the state
       fetchData();
     } catch (error) {
@@ -163,6 +166,12 @@ const Anuuities = ({ chatid }) => {
   };
   
   console.log("Rendering paragraphs. showAnnuityID:", showAnnuityID);
+
+    // Handle refreshing data
+    const handleRefresh = () => {
+      fetchData();
+    };
+
   return (
     <div className="App" style={{ marginTop: "40px", marginRight: "60px" }}>
       {error ? (
