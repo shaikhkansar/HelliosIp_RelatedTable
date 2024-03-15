@@ -10,12 +10,12 @@ const Anuuities = ({ chatid }) => {
   console.log("responseData instruction type", instructionType);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [editIndex, setEditIndex] = useState(null); // Track the index of the item being edited
+  const [editIndex, setEditIndex] = useState(null); 
   const [editedFields, setEditedFields] = useState({});
-  const [showAnnuities, setShowAnnuities] = useState(true); // State to toggle between Annuities and Test heading
+  const [showAnnuities, setShowAnnuities] = useState(true); 
   const [annuityID, setAnnuityID] = useState(null);
   const [showAnnuityID, setShowAnnuityID] = useState(true);
-  const [showSpinner, setShowSpinner] = useState(false); // State to control spinner visibility
+  const [showSpinner, setShowSpinner] = useState(false); 
 
   console.log("showAnnuityID:", showAnnuityID);
 
@@ -122,15 +122,14 @@ const Anuuities = ({ chatid }) => {
       setShowSpinner(true);
 
       // Make a POST request to the endpoint with the payload
-      const response = await fetch(
-        "https://prod-143.westus.logic.azure.com:443/workflows/90a302fbee3e4bef8d2a0ff5954e6093/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=R_kKpbcUVfu9iiXwnMCwqu_yw8WzOEVz1GUJ1tfrpvY",
-        {
+      const response = await fetch (Data[4].url,(
+       {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(editedData),
-        }
+        })
       );
 
       // Check if the response is successful

@@ -6,9 +6,7 @@ import TabConfig from "./TabConfig";
 import Privacy from "./Privacy";
 import Tab from "./Tab";
 import "./App.css";
-import AnnuitiesClientInstruction from "./PatentForAnnuities";
-import AnnuitiesClientInstructions from "./AnnuitiesClientInstructions";
-import EditAnnuities from "./EditAnnuities";
+import AnnuitiesPatents from "./AnnuitiesPatents";
 
 export default function App() {
   return (
@@ -18,8 +16,7 @@ export default function App() {
         <Route path="/termsofuse" element={<TermsOfUse />} />
         <Route path="/tab" element={<Tab />} />
         <Route path="/config" element={<TabConfig />} />
-        <Route path="/annuities-client-instructions" element={<AnnuitiesClientInstructions />} />
-        <Route path="/editAnnuities" element={<EditAnnuities />} />
+        <Route path="/annuities-patents" element={<AnnuitiesPatents />} />
       </Routes>
     </Router>
   );
