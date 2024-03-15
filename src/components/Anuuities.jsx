@@ -179,7 +179,7 @@ const Anuuities = ({ chatid }) => {
       ) : (
         <>
           {showAnnuities && (
-            <h5
+            <p
               style={{
                 marginLeft: "450px",
                 marginTop: "20px",
@@ -188,7 +188,7 @@ const Anuuities = ({ chatid }) => {
               }}
             >
               Annuities
-            </h5>
+            </p>
           )}
           <div
             style={{ marginLeft: "448px", marginTop: "20px", width: "53.5%" }}

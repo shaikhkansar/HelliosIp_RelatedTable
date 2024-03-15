@@ -306,6 +306,15 @@ body {
   background-color: #0056b3;
 }
 
+/* for Annuities CSS */
+/* .hdng{
+   margin-left: 450px;
+    margin-top: 20px;
+    width: 520px ;
+    font-size: 20px ;
+} */
+
+
 
 
 @media only screen and (max-width: 600px) {
@@ -320,239 +329,24 @@ body {
 }
 
   body {
-    overflow-x: show;
-    overflow-y: show;
+    overflow-x: none;
+    overflow-y: none;
     margin: 20px!important;
     
   }
 
-  /* Annuities Responsive CSS Property */
-
-.table-striped{
-  margin-left:-103px;
-  width: 52%;
-  font-size: 13px;
-  margin-top: 10px;
-}
-.h4, h4 {
-  font-size: calc(1.275rem + .3vw);
-  margin-left: -103px;
-  font-size: 13px;
+/* Annuities CSS Media Query */
+.card {
+  width: 260px;
+  left:-65px;
+  font-size: 13px !important;
+  margin-top: 1px !important;
 }
 
-/* instructionProject Responsive CSS Property  */
-
-.tablestyle{
-  background-color: white;
-  width: 26%;
-  margin-left: 345px;
-  font-size: 12px;
-}
-
-.thstyle{
-
-  background-color: lightgray;
-  padding: 8px;
-}
-
-.thTdstyle{
-  padding: 8px;
-}
-
-
-
-
-  /* .spinner {
-    margin-left: 10px!important;
-    margin-top: 220px;
-  } */
-  /* .form-control {
-    display: block;
-    font-size: 10px !important;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    appearance: none;
-    border-radius: 0.25rem;
+.h1, .h2, .h3, .h4, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-left: 1px!important;
+  font-size: 13px !important;
   }
-  .col {
-    width: 46% !important;
-    margin-top: 10px;
-  }
-  .row {
-    display: block;
-    margin-right: 17px !important;
-  }
-  .search-control {
-    width: 49% !important;
-    margin-left: -9px;
-  } */
-  /* .search-icon {
-    position: absolute;
-    top: 7%;
-    right: 43%; 
-    transform: translateY(-50%);
-    color: lightgray;
-  }
-  .form-control2 {
-    width: 252px !important;
-    margin-left: -9px 
-  }
-  .btn {
-    margin-top: 10px !important;
-    width: 250px;
-    height: 31px;
-  } */
-
-  /* img,
-  svg {
-    vertical-align: middle;
-    margin-top: -3px;
-  } */
-  /* .table {
-    width: 238px !important;
-    font-size: 11px;
-  }
-  .heading {
-    font-size: 11px !important;
-  }
-  .results-container {
-    width: 350px !important;
-    margin-left: 56px !important;
-  }
-  .sticky-header {
-    font-size: 10px !important;
-  }
-  .user-td {
-    font-size: 12px;
-  } */
-  /* .edit-icon {
-    margin-right: 9px !important;
-  } */
-  /* .successpopup {
-    font-size: 11px;
-    width: 223px !important;
-    margin-left: 10px;
-  } */
-
-  /* Add your styles for small screens here */
-  /* .table-container {
-    overflow-x: auto;
-    margin-left: 92px;
-  } */
-
-  /* Add your styles for table headers and cells on small screens here */
-  /* .table-container th,
-  .table-container td {
-    white-space: nowrap;
-    font-size: 12px;
-    padding: 4px;
-  } */
-
-  /* link */
-  /* img,
-  svg {
-    vertical-align: middle;
-    margin-bottom: 7px;
-    height: 15px;
-    margin-left: -10px;
-  } */
-
-  /* .edit-icon {
-    margin-right: 9px !important;
-    margin-right: 50px !important;
-    height: 15px;
-  } */
-
-  /* .delete-icon {
-    margin-top: 2px;
-    margin-left: -29px;
-    height: 15px;
-  }
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1040;
-    width: 98vw;
-    height: 100vh;
-    background-color: #000;
-    margin: 0px;
-  }
-  .modal-content {
-    position: relative;
-    top: 66px;
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-    pointer-events: auto;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0.3rem;
-    outline: -1;
-    margin-left: -495px;
-    font-size: 10px;
-  } */
-  /* .search-icon{
-   margin-left: -16rem;
-   margin-top: 1px;
-  } */
-  /* .invalid-feedback {
-    font-size: 11px;
-  }
-
-  .table>:not(caption)>*>* {
-    font-size: 13px;
-   } */
-  /* .table-striped{
-    margin-left: -2%;
-  } */
-
-  /* .heading{
-    font-size: 12px!important;
-  } */
-
-
-
-
-/* AnnuitiesClientInx rcss */
-.annuities-client-inx{
-  margin-left:290px;
-  width: calc(30% - 1px)!important;
-}
-
-.table>:not(caption)>*>* {
-  font-size: 12px;
-}
-
-/* edit and delete icon css  */
-img, svg {
-  vertical-align: middle;
-  margin-left: -15px;
-  
-}
-
-
-/* .backbutton{
-  margin-left: px!important;
-  margin-top: 30px;
-  font-size: 12px!important;
-} */
-.btn-success{
-  margin-left: -135px;
-}
-
-.add-button{
-  margin-left: 50px;
-  
-}
-
-
-
 
 .form-control {
   display: block;
@@ -561,94 +355,27 @@ img, svg {
   line-height: 2;
   color: #212529;
   background-color: #fff;
-  /* background-clip: padding-box; */
   border: 1px solid #ced4da;
   appearance: none;
   border-radius: 0.25rem;
-  margin-left: 301px;
-  width: 30%!important;
+  margin-left: 0px;
+  width: 100% !important;
   margin-top: 0px;
 }
 
-.search-icon{
-  position: fixed;
-  left: 200px;
-  
-  /* margin-top: 435px;
-  margin-left: -440px; */
-  
+img, svg {
+  vertical-align: middle;
+  margin-left: -1px;
+}
+.card {
+   margin-right: 257px!important;
+  font-size: 13px !important;
+  margin-top: 1px !important;
 }
 
-.labelnm{
-  position: absolute;
-  left: 53px;
-  bottom: 32px;
-}
-
-button, input, optgroup, select, textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  margin-left: -81px;
-  margin-top: 20px;
-}
-
-
-.labelinp{
-margin-top: 10px;
-width: 10px!important;
-margin-left: 10px!important;
-}
-
-.editInput{
-  width: 250px!important ;
-  margin-left: -70px!important;
-}
-
-.editInput {
-  /* width: 0%!important; */
-  margin-left: -250px;
-}
-
-.f1j5qnyn {
-  /* padding-top: 2rem; */
-}
-
-.fk0ktpv {
-  /* padding-left: 2rem; */
-}
-
-.refresh-button{
-  position: relative;
-  bottom:210px;
-  left:80px
-
- }
-/* side panel size  */
- .f1j5qnyn {
-  padding-top: 2rem!important;
-}
-
-.fk0ktpv {
-  padding-left: -2rem!important;
-}
-
-.f1au0vf7 {
-  padding-right: 2rem!important;
-}
-
-.pa-nm {
-  /* left: 91.95px; */
-  margin-left: -10px!important;
-}
-
-.mectrl_topHeader .mectrl_profilepic {
-  width: 32px;
-  height: 32px;
-  margin: -13px;
-}
-.itemlink{
-  margin-left: 10px;
+.spinner {
+  margin-top: 200px;
+  margin-left: 50px;
 }
 
 
