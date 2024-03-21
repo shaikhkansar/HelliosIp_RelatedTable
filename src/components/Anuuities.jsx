@@ -21,7 +21,7 @@ const Anuuities = ({ chatid }) => {
 
   const fetchData = async () => {
     try {
-      setLoading(true); // Show the spinner
+      setLoading(true); 
       const encodeddata = encodeURIComponent(chatid);
       const modifiedEncodedData = encodeddata.replace(/%3A/g, "%3a");
 
@@ -38,7 +38,6 @@ const Anuuities = ({ chatid }) => {
 
       if (!response.ok) {
         if (response.status === 502) {
-          // No need to display error for a 502 Bad Gateway status
           console.warn("Failed to fetch meeting details (status 502)");
           return;
         }
@@ -57,13 +56,13 @@ const Anuuities = ({ chatid }) => {
       console.log("Updated instructionType:", responseData);
       setError(null);
       setLoading(false);
-      setShowSpinner(false); // Hide the spinner
+      setShowSpinner(false); 
 
       console.log("Meeting details:", responseData);
     } catch (error) {
       setError(`Error fetching meeting details: ${error.message}`);
       setLoading(false);
-      setShowSpinner(false); // Hide the spinner
+      setShowSpinner(false); 
       console.error("Error fetching meeting details", error);
     }
   };
@@ -74,12 +73,11 @@ const Anuuities = ({ chatid }) => {
 
   const handleEditClick = (index) => {
     setEditIndex(index);
-    setShowAnnuities(false); // Hide the heading when edit button is clicked
-    // Set the old value of Comments
+    setShowAnnuities(false); 
     setAnnuityID(instructionType[index]?.AnnuityID);
     setEditedFields({
       ...editedFields,
-      Comments: instructionType[index]?.ClientInstructionComments || "", // Use the current value or empty string if not available
+      Comments: instructionType[index]?.ClientInstructionComments || "", 
     });
   };
 
@@ -100,13 +98,11 @@ const Anuuities = ({ chatid }) => {
       ) {
         throw new Error("Invalid data to save changes");
       }
-      // Get the hip_annuity value for the current editIndex
       const annuityID = instructionType[editIndex]?.AnnuityID;
-
+  
       if (!annuityID) {
         throw new Error("AnnuityID value not found");
       }
-      // Construct the payload with the edited fields and hip_annuity
       const editedData = {
         hip_annuity: annuityID,
         Instructions:
@@ -115,42 +111,37 @@ const Anuuities = ({ chatid }) => {
         Comments:
           editedFields["Comments"] || instructionType[editIndex].Comments,
       };
-
+  
       console.log("editedData", editedData);
-
-      // Show the spinner
+  
       setShowSpinner(true);
-
-      // Make a POST request to the endpoint with the payload
-      const response = await fetch (Data[4].url,(
-       {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(editedData),
-        })
-      );
-
-      // Check if the response is successful
+  
+      // Use the correct URL from the Data array
+      const response = await fetch(Data[3].url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editedData),
+      });
+  
       if (!response.ok) {
         throw new Error("Failed to save changes");
       }
-
-      // Log success message and reset state
+  
       console.log("Changes saved successfully");
       setEditIndex(null);
       setEditedFields({});
-
-         // Show the Annuities heading again
-    setShowAnnuities(true);
-
-      // After saving changes, fetch meeting details again to update the state
+      // Commenting out or removing setShowAnnuities(true) to keep the state as it is
+      // setShowAnnuities(true);
+  
       fetchData();
     } catch (error) {
       console.error("Error saving changes:", error);
     }
   };
+  
+  
   const optionMapping = {
     "910310000": "Pay",
     "846440001": "Pay in Grace Period",
@@ -272,7 +263,7 @@ const Anuuities = ({ chatid }) => {
                                 style={{ color: "red", cursor: "pointer" }}
                                 onClick={() => {
                                   setEditIndex(null);
-                                  setShowAnnuities(true); // Show the heading when cancel button is clicked
+                                  setShowAnnuities(true); 
                                   setEditedFields({});
                                 }}
                               />
@@ -303,11 +294,11 @@ const Anuuities = ({ chatid }) => {
             </div>
           </div>
           {/* {annuityID && <PatentsForAnnuities annuityID={annuityID} />} */}
-          {showSpinner && (
+          {/* {showSpinner && (
             <div className="spinner-border text-primary spinner" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
-          )}
+          )} */}
         </>
       )}
     </div>

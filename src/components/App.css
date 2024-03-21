@@ -1,9 +1,8 @@
 body {
   display: flex;
-  justify-content: center !important; /* Horizontally center the content */
-  align-items: center !important; /* Vertically center the content */
-  /* Add other CSS properties as needed */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  justify-content: center !important; 
+  align-items: center !important; 
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,16 +16,15 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px 0; /* Add margin for spacing between cards */
+  margin: 10px 0; 
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 100%; /* Ensure each card takes up the full width of its container */
+  width: 100%; 
   font-size: 15px!important;
 }
 
 .card h3 {
   margin-top: 0;
   font-size: 15px!important;
-  /* text-decoration: none; */
   }
 
   .card p {

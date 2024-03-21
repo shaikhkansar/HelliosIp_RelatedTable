@@ -44,7 +44,6 @@ const AnuuitiesProjectId = ({ chatid }) => {
     fetchData();
 
     return () => {
-      // Cleanup function to set isMounted to false when the component is unmounted
       isMounted = false;
     };
   }, [chatid]);
